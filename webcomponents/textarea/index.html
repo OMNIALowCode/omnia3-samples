@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <script src="./BarChart.js"></script>
+  </head>
+  <body>
+    <h3>OMNIA Web Component</h3>
+    <h4>Textarea</h4>
+    <hr/>
+    
+    <div>
+      <omnia-textarea />
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var component = document.querySelector('omnia-textarea');
+            component.value = 'Default value';
+        });
+    </script>
+  </body>
+  </html>  
