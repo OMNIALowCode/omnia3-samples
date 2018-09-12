@@ -7,6 +7,7 @@ class BarChartElement extends HTMLElement {
 		// Using the Chart.js library to draw the charts (https://www.chartjs.org/)
         this.script = document.createElement('script');
         this.script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js');
+        this.script.onload = () => this.render(this.value);
 
         this.wrapper = document.createElement('div');
         this.wrapper.style.width = '100%';
