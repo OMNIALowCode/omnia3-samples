@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="./omnia-bar-chart.js"></script>
+    <script src="./omnia-line-chart.js"></script>
 
-    <title>OMNIA Web Components: Bar Chart</title>
+    <title>OMNIA Web Components: Line Chart</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,10 +15,10 @@
 
     <div class="container">
         <h3>OMNIA Web Component</h3>
-        <h4>Bar Chart (using chart.js)</h4>
+        <h4>Line Chart (using chart.js)</h4>
         <hr/>
         <div class="col">
-            <omnia-bar-chart />
+            <omnia-line-chart />
         </div>
     </div>
 
@@ -29,7 +29,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var component = document.querySelector('omnia-bar-chart');
+            var component = document.querySelector('omnia-line-chart');
             component.value = [{
                 serievalue: 'Jan',
                 datavalue: 35

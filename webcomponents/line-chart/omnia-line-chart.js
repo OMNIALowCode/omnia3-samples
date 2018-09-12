@@ -1,5 +1,5 @@
 
-class BarChartElement extends HTMLElement {
+class LineChartElement extends HTMLElement {
 
     constructor() {
         super();
@@ -22,15 +22,6 @@ class BarChartElement extends HTMLElement {
         this.appendChild(this.script);
         this.appendChild(this.wrapper);
     }
-	
-	getColor(index){
-        return ["rgb(54, 162, 235)", 
-                "rgb(75, 192, 192)",
-                "rgb(255, 99, 132)", 
-                "rgb(255, 159, 64)", 
-                "rgb(255, 205, 86)"
-                ][index%5];
-    }
 
     render() {
         if (typeof Chart === 'function' && Array.isArray(this.chartData)){
@@ -46,31 +37,27 @@ class BarChartElement extends HTMLElement {
 			
             const labels = this.chartData.map(entry => entry.serievalue);
             const data = this.chartData.map(entry => entry.datavalue);
-			
+            
             const config = {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: labels,
-                    responsive: false,
                     datasets: [{
                         label: '',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
                         data: data,
-                        backgroundColor: data.map((entry, index) => this.getColor(index))
+                        fill: false,
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     legend: { display: false  },
-                    scales: {
-                        yAxes: [{
-                            ticks: { beginAtZero:true }
-                        }]
-                    }
                 }
             };
-			
-			const myChart = new Chart(this.canvas, config);
+
+            const myChart = new Chart(this.canvas, config);
         }
     }
 
@@ -80,4 +67,4 @@ class BarChartElement extends HTMLElement {
     }
 }
 
-customElements.define('omnia-bar-chart', BarChartElement);
+customElements.define('omnia-line-chart', LineChartElement);
