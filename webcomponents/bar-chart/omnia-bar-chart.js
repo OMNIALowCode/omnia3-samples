@@ -7,7 +7,7 @@ class BarChartElement extends HTMLElement {
 		// Using the Chart.js library to draw the charts (https://www.chartjs.org/)
         this.script = document.createElement('script');
         this.script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js');
-        this.script.onload = () => this.render(this.value);
+        this.script.onload = () => this.render();
 
         this.wrapper = document.createElement('div');
         this.wrapper.style.width = '100%';
@@ -32,8 +32,8 @@ class BarChartElement extends HTMLElement {
                 ][index%5];
     }
 
-    render(newData) {
-        if (typeof Chart === 'function' && Array.isArray(newData)){
+    render() {
+        if (typeof Chart === 'function' && Array.isArray(this.chartData)){
 			
 			// This WebComponent works with the following data structure
 			/*
@@ -44,8 +44,8 @@ class BarChartElement extends HTMLElement {
 			]
 			*/
 			
-            const labels = newData.map(entry => entry.serievalue);
-            const data = newData.map(entry => entry.datavalue);
+            const labels = this.chartData.map(entry => entry.serievalue);
+            const data = this.chartData.map(entry => entry.datavalue);
 			
             const config = {
                 type: 'bar',
@@ -75,7 +75,8 @@ class BarChartElement extends HTMLElement {
     }
 
     set value(newValue) {
-        this.render(newValue);
+        this.chartData = newValue;
+        this.render();
     }
 }
 
