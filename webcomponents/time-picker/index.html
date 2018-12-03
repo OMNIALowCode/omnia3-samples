@@ -23,7 +23,7 @@
         <div class="col pt-3">
             <p>If you want to validate the value in the server-side, you can use the following C# code:</p>
 
-            <textarea disabled rows="6">
+            <textarea disabled rows="8" class="form-control col-12">
 if(!string.IsNullOrEmpty(newValue)){
     if(!DateTime.TryParseExact(newValue, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
         throw new Exception($"The value '{newValue}' is not valid as Time input.");
