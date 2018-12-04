@@ -19,7 +19,7 @@ class TimePickerElement extends HTMLElement {
       this._container = document.createElement('div');
 
       this._input = getInput();
-      this._input.addEventListener('change', this.valueUpdated.bind(this));
+      this._input.addEventListener('blur', this.valueUpdated.bind(this));
 
       this._container.appendChild(this._input);
   }
