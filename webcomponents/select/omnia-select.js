@@ -2,6 +2,7 @@
 const TRANSLATIONS = {
     default: {
         DefaultOption: 'Please select a value',
+        
     },
     ptpt: {
         DefaultOption: 'Selecione uma opção',
@@ -30,6 +31,7 @@ class OmniaSelect extends HTMLElement {
 	
 		this._options = [];
 
+        this._translator = null;
 		this.valueUpdated = this.valueUpdated.bind(this);
 
 		this._select = document.createElement('select');
@@ -53,20 +55,20 @@ class OmniaSelect extends HTMLElement {
 		this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: currentSelection > 0 ? this._options[currentSelection - 1].value : '' } }));
 	}
 	
-	renderOptions(translator) {
-		const currentSelection = this._select.selectedIndex;
+	renderOptions() {
 		this._select.innerHTML = '';
 		
-		this._select.append(getSelectOption(getDefaultOption(translator)));
+		this._select.append(getSelectOption(getDefaultOption(this._translator)));
 		for(const option of this._options)
-			this._select.appendChild(getSelectOption(option, translator));
+			this._select.appendChild(getSelectOption(option, this._translator));
 
-		this._select.selectedIndex = currentSelection;
+        const newValueIndex = this._options.map(obj => obj.value).indexOf(this._value) + 1;
+		this._select.selectedIndex = newValueIndex >= 0 ? newValueIndex : 0;
 	}
   
     set value(newValue) {
-        const newValueIndex = this._options.map(obj => obj.value).indexOf(newValue) + 1;
-		this._select.selectedIndex = newValueIndex >= 0 ? newValueIndex : 0;
+        this._value = newValue;
+        this.renderOptions();
     }
     
     get options() {
@@ -85,7 +87,8 @@ class OmniaSelect extends HTMLElement {
 	
 	set context(newValue) {
         if (newValue) {
-			this.renderOptions(newValue.getLanguageTranslator());
+            this._translator = newValue.getLanguageTranslator();
+			this.renderOptions();
         }
     }
 }
