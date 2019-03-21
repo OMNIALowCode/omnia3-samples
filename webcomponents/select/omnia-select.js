@@ -30,18 +30,19 @@ class OmniaSelect extends HTMLElement {
 		super();
 	
 		this._options = [];
-
+        this._text = "";
         this._translator = null;
 		this.valueUpdated = this.valueUpdated.bind(this);
 
 		this._select = document.createElement('select');
 		this._select.setAttribute('class', 'form-control');
-		this._select.addEventListener('change', this.valueUpdated);
 	}
   
 	connectedCallback() {
 		this.renderOptions();
 		this._select.selectedIndex = 0;
+		
+		this._select.addEventListener('change', this.valueUpdated);
 		
 		this.appendChild(this._select);
 	}
@@ -64,6 +65,8 @@ class OmniaSelect extends HTMLElement {
 
         const newValueIndex = this._options.map(obj => obj.value).indexOf(this._value) + 1;
 		this._select.selectedIndex = newValueIndex >= 0 ? newValueIndex : 0;
+	    if (this._options[newValueIndex - 1])
+			this._text = this._options[newValueIndex - 1].text;
 	}
   
     set value(newValue) {
@@ -74,6 +77,10 @@ class OmniaSelect extends HTMLElement {
     get options() {
         return this._options;
     }
+	
+	get text() {
+		return this._text;
+	}
 	
 	set options(newValue) {
 		this._options = newValue;
