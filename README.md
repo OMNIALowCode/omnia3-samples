@@ -1,7 +1,9 @@
 # OMNIA 3 Samples
 Samples repository for the OMNIA Platform version 3.
 
-[Click here to see it in action](https://omnialowcode.github.io/omnia3-samples/)
+**Languages**: [Click here to get the available languages](https://github.com/OMNIALowCode/omnia3-samples/tree/master/languages)
+
+**Web Components**: [Click here to see the samples in action](https://omnialowcode.github.io/omnia3-samples/)
 
 
 ## Documentation

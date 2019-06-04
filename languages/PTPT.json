@@ -1,0 +1,571 @@
+{
+	"name": "ptPT",
+	"description": "Português (Portugal)",
+	"culture": "pt-PT",
+	"texts": [
+		{
+			"name": "SaveButton",
+			"value": "Gravar"
+		},
+		{
+			"name": "ShowHistoryButton",
+			"value": "Ver histórico"
+		},
+		{
+			"name": "DeleteRecordButton",
+			"value": "Apagar registo"
+		},
+		{
+			"name": "DestroyRecordButton",
+			"value": "Destruir dados sensíveis"
+		},
+		{
+			"name": "MoreOptionsButton",
+			"value": "Mais opções"
+		},
+		{
+			"name": "DataSourceSelectionButton",
+			"value": "Fonte de dados"
+		},
+		{
+			"name": "AddNewRecordButton",
+			"value": "Criar novo"
+		},
+		{
+			"name": "AddNewToCollectionButton",
+			"value": "Adicionar"
+		},
+		{
+			"name": "CreateActionTitle",
+			"value": "Criar"
+		},
+		{
+			"name": "EditActionTitle",
+			"value": "Editar"
+		},
+		{
+			"name": "InterfaceElementOptionalLabel",
+			"value": "opcional"
+		},
+		{
+			"name": "User_ChangeLanguageOption",
+			"value": "Mudar idioma"
+		},
+		{
+			"name": "User_RoleLabel",
+			"value": "Perfil"
+		},
+		{
+			"name": "User_ChangeRoleOption",
+			"value": "Mudar perfil"
+		},
+		{
+			"name": "User_EndSessionOption",
+			"value": "Terminar sessão"
+		},
+		{
+			"name": "Area_Modeler",
+			"value": "Modelação"
+		},
+		{
+			"name": "Area_Security",
+			"value": "Segurança"
+		},
+		{
+			"name": "Area_Management",
+			"value": "Gestão"
+		},
+		{
+			"name": "Area_Application",
+			"value": "Aplicação"
+		},
+		{
+			"name": "Area_Tenant",
+			"value": "Tenant"
+		},
+		{
+			"name": "Area_OtherTenant",
+			"value": "Outro tenant"
+		},
+		{
+			"name": "About_Option",
+			"value": "Sobre"
+		},
+		{
+			"name": "General_Platform",
+			"value": "Platforma"
+		},
+		{
+			"name": "General_Version",
+			"value": "Versão"
+		},
+		{
+			"name": "General_CloseAction",
+			"value": "Fechar"
+		},
+		{
+			"name": "NotificationCenter_Label",
+			"value": "Centro de notificações"
+		},
+		{
+			"name": "NotificationCenter_NoNotificationsMessage",
+			"value": "Não existem notificações"
+		},
+		{
+			"name": "Operations_Label",
+			"value": "As minhas operações"
+		},
+		{
+			"name": "NotificationCenter_GoToOperationsLabel",
+			"value": "Ir para a lista de operações"
+		},
+		{
+			"name": "Delete_ConfirmLabel",
+			"value": "Confirmar remoção"
+		},
+		{
+			"name": "Delete_ConfirmText",
+			"value": "Tem a certeza que quer apagar"
+		},
+		{
+			"name": "Destroy_ConfirmLabel",
+			"value": "Confirmar destruição de dados"
+		},
+		{
+			"name": "Destroy_ConfirmText",
+			"value": "Tem a certeza que quer destruir"
+		},
+		{
+			"name": "History_Label",
+			"value": "Histórico"
+		},
+		{
+			"name": "General_DescriptionLabel",
+			"value": "Descrição"
+		},
+		{
+			"name": "General_AtLabel",
+			"value": "Em"
+		},
+		{
+			"name": "General_ByLabel",
+			"value": "Por"
+		},
+		{
+			"name": "General_ActionDelete",
+			"value": "Apagar"
+		},
+		{
+			"name": "General_ActionConfirm",
+			"value": "Confirmar"
+		},
+		{
+			"name": "Menu_GoBack",
+			"value": "Voltar"
+		},
+		{
+			"name": "Calendar_Today",
+			"value": "Hoje"
+		},
+		{
+			"name": "Calendar_Weekly",
+			"value": "Semanal"
+		},
+		{
+			"name": "Calendar_Monthly",
+			"value": "Mensal"
+		},
+		{
+			"name": "Calendar_Yearly",
+			"value": "Anual"
+		},
+		{
+			"name": "Calendar_Calendar",
+			"value": "Calendário"
+		},
+		{
+			"name": "Calendar_WeekCalendar",
+			"value": "Calendário semanal"
+		},
+		{
+			"name": "Calendar_MonthCalendar",
+			"value": "Calendário mensal"
+		},
+		{
+			"name": "Calendar_YearCalendar",
+			"value": "Calendário anual"
+		},
+		{
+			"name": "Calendar_Schedule",
+			"value": "Cronograma"
+		},
+		{
+			"name": "Calendar_WeekSchedule",
+			"value": "Cronograma semanal"
+		},
+		{
+			"name": "Calendar_MonthSchedule",
+			"value": "Cronograma mensal"
+		},
+		{
+			"name": "Calendar_YearSchedule",
+			"value": "Cronograma anual"
+		},
+		{
+			"name": "Calendar_ChangeView",
+			"value": "Alterar vista"
+		},
+		{
+			"name": "Calendar_GoToPrevious",
+			"value": "Ir para o anterior"
+		},
+		{
+			"name": "Calendar_GoToNext",
+			"value": "Ir para o seguinte"
+		},
+		{
+			"name": "Calendar_AllCategories",
+			"value": "Todos"
+		},
+		{
+			"name": "General_Months_January",
+			"value": "Janeiro"
+		},
+		{
+			"name": "General_Months_February",
+			"value": "Fevereiro"
+		},
+		{
+			"name": "General_Months_March",
+			"value": "Março"
+		},
+		{
+			"name": "General_Months_April",
+			"value": "Abril"
+		},
+		{
+			"name": "General_Months_May",
+			"value": "Maio"
+		},
+		{
+			"name": "General_Months_June",
+			"value": "Junho"
+		},
+		{
+			"name": "General_Months_July",
+			"value": "Julho"
+		},
+		{
+			"name": "General_Months_August",
+			"value": "Agosto"
+		},
+		{
+			"name": "General_Months_September",
+			"value": "Setembro"
+		},
+		{
+			"name": "General_Months_October",
+			"value": "Outubro"
+		},
+		{
+			"name": "General_Months_November",
+			"value": "Novembro"
+		},
+		{
+			"name": "General_Months_December",
+			"value": "Dezembro"
+		},
+		{
+			"name": "General_Days_Sunday",
+			"value": "Domingo"
+		},
+		{
+			"name": "General_Days_Monday",
+			"value": "Segunda-feira"
+		},
+		{
+			"name": "General_Days_Tuesday",
+			"value": "Terça-feira"
+		},
+		{
+			"name": "General_Days_Wednesday",
+			"value": "Quarta-feira"
+		},
+		{
+			"name": "General_Days_Thursday",
+			"value": "Quinta-feira"
+		},
+		{
+			"name": "General_Days_Friday",
+			"value": "Sexta-feira"
+		},
+		{
+			"name": "General_Days_Saturday",
+			"value": "Sábado"
+		},
+		{
+			"name": "Calendar_SelectRange",
+			"value": "Selecionar intervalo"
+		},
+		{
+			"name": "Calendar_SelectRangeHelp",
+			"value": "Para selecionar um intervalo, clique na data inicial e depois clique na data final para confirmar o intervalo pretendido."
+		},
+		{
+			"name": "Calendar_SeeAll",
+			"value": "Ver tudo"
+		},
+		{
+			"name": "General_ExportCsv",
+			"value": "Exportar como CSV"
+		},
+		{
+			"name": "General_NoRecordsFound",
+			"value": "Não foram encontrados registos"
+		},
+		{
+			"name": "CalendarForm_TitleEditEntry",
+			"value": "Editar entrada de calendário"
+		},
+		{
+			"name": "CalendarForm_TitleNewEntry",
+			"value": "Adicionar entrada de calendário"
+		},
+		{
+			"name": "CalendarForm_ButtonRemove",
+			"value": "Remover"
+		},
+		{
+			"name": "CalendarForm_ButtonConfirm",
+			"value": "Confirmar"
+		},
+		{
+			"name": "List_FiltersTitle",
+			"value": "Filtros"
+		},
+		{
+			"name": "List_Filters_EqualTo",
+			"value": "Igual a"
+		},
+		{
+			"name": "List_Filters_GreaterThan",
+			"value": "Maior que"
+		},
+		{
+			"name": "List_Filters_LessThan",
+			"value": "Menor que"
+		},
+		{
+			"name": "List_Filters_GreaterThanOrEqualTo",
+			"value": "Maior ou igual a"
+		},
+		{
+			"name": "List_Filters_LessThanOrEqualTo",
+			"value": "Menor ou igual a"
+		},
+		{
+			"name": "List_Filters_NotEqualTo",
+			"value": "Diferente de"
+		},
+		{
+			"name": "List_Filters_Like",
+			"value": "Contém"
+		},
+		{
+			"name": "List_Filters_Between",
+			"value": "Entre"
+		},
+		{
+			"name": "ErrorMessage_ElementInitialization",
+			"value": "Ocorreu um erro na inicialização de {definition}. Por favor, tente novamente. Se o erro acontecer novamente contacte o administrador."
+		},
+		{
+			"name": "ErrorMessage_ElementLoading",
+			"value": "Erro a carregar o elemento {identifier}."
+		},
+		{
+			"name": "ErrorMessage_ExecuteAfterChange",
+			"value": "Erro a executar o comportamento After Change."
+		},
+		{
+			"name": "ErrorMessage_ApplyApiResponse",
+			"value": "Erro a aplicar a resposta do servidor."
+		},
+		{
+			"name": "ErrorMessage_UpdateData",
+			"value": "Erro a atualizar os dados."
+		},
+		{
+			"name": "ErrorMessage_ExecuteBeforeChange",
+			"value": "Error a executar o comportamento Before Change"
+		},
+		{
+			"name": "ErrorMessage_RequiredElementValue",
+			"value": "{identifier} não pode estar vazio."
+		},
+		{
+			"name": "ErrorMessage_MultiplicityLowerLimit",
+			"value": "{identifier} deve ter no mínimo {value} elementos."
+		},
+		{
+			"name": "ErrorMessage_MultiplicityUpperLimit",
+			"value": "{identifier} deve ter no máximo {value} elementos."
+		},
+		{
+			"name": "SuccessMessage_Create",
+			"value": "{definition} com o código \"{identifier}\" adicionado com sucesso."
+		},
+		{
+			"name": "SuccessMessage_Update",
+			"value": "{definition} com o código \"{identifier}\" atualizado com sucesso."
+		},
+		{
+			"name": "SuccessMessage_Delete",
+			"value": "{definition} com o código \"{identifier}\" removido com sucesso."
+		},
+		{
+			"name": "SuccessMessage_Destroy",
+			"value": "{definition} com o código \"{identifier}\" destruído com sucesso."
+		},
+		{
+			"name": "SuccessMessage_SavedWithAdditionalOperations",
+			"value": "{definition} com o código \"{identifier}\" guardado com sucesso. Uma operação adicional será executada dentro de momentos."
+		},
+		{
+			"name": "ErrorMessage_ConnectorNotFound",
+			"value": "O conetor necessário para o pedido não está ligado."
+		},
+		{
+			"name": "ErrorMessage_ConnectorTimeout",
+			"value": "A operação executada no conetor excedeu o tempo máximo de execução."
+		},
+		{
+			"name": "ErrorMessage_EntityAlreadyExists",
+			"value": "A entidade já existe."
+		},
+		{
+			"name": "ErrorMessage_EntityHasBeenChanged",
+			"value": "A operação falhou, devido à entidade já ter sido alterada por outro utilizador. Por favor, reveja as alterações e tente novamente."
+		},
+		{
+			"name": "ErrorMessage_EntityHasNoSensitiveDataToDestroy",
+			"value": "Não existem dados sensíveis para destruir."
+		},
+		{
+			"name": "ErrorMessage_EntityNotFound",
+			"value": "Entidade não encontrada."
+		},
+		{
+			"name": "ErrorMessage_InternalError",
+			"value": "O servidor encontrou um erro interno. Por favor, tente novamente."
+		},
+		{
+			"name": "ErrorMessage_InvalidInput",
+			"value": "Um dos dados de entrada não é válido."
+		},
+		{
+			"name": "ErrorMessage_TenantNotFound",
+			"value": "O ambiente para o Tenant não foi encontrado. Verifique se o servidor está acessível e se o Tenant/Ambiente existe."
+		},
+		{
+			"name": "ErrorMessage_CreateRootUnsupported",
+			"value": "Não é possível criar um novo registo separadamente, devido à entidade está marcada como non-root e deve ser usada no contexto de outra entidade."
+		},
+		{
+			"name": "ErrorMessage_CreateSystemDataSourceUnsupported",
+			"value": "Não é possível adicionar registos ao Data Source \"System\"."
+		},
+		{
+			"name": "ErrorMessage_ValueCannotBeChanged",
+			"value": "Valor não pode ser alterado."
+		},
+		{
+			"name": "ErrorMessage_InvalidIdentifier",
+			"value": "{value} não é um identificador válido."
+		},
+		{
+			"name": "ErrorMessage_LowerLimitNotRespected",
+			"value": "Limite mínimo de {limit} não respeitado."
+		},
+		{
+			"name": "ErrorMessage_UpperLimitNotRespected",
+			"value": "Limite máximo de {limit} não respeitado."
+		},
+		{
+			"name": "ErrorMessage_RequiredValue",
+			"value": "{path} é obrigatório."
+		},
+		{
+			"name": "ErrorMessage_TypeMismatch",
+			"value": "\"{value}\" não é válido para o tipo \"{type}\" de {path}."
+		},
+		{
+			"name": "ErrorMessage_ValidationFailed",
+			"value": "Falha ao validar pedido."
+		},
+		{
+			"name": "SelectRecordTitle",
+			"value": "Selecionar registo"
+		},
+		{
+			"name": "CancelButton",
+			"value": "Cancelar"
+		},
+		{
+			"name": "SelectLanguageTitle",
+			"value": "Selecionar idioma"
+		},
+		{
+			"name": "SelectRoleTitle",
+			"value": "Selectionar o perfil"
+		},
+		{
+			"name": "UseAllRolesButton",
+			"value": "Usar todas"
+		},
+		{
+			"name": "General_Name",
+			"value": "Nome"
+		},
+		{
+			"name": "General_Description",
+			"value": "Descrição"
+		},
+		{
+			"name": "General_Language",
+			"value": "Idioma"
+		},
+		{
+			"name": "List_NumberOfRecords",
+			"value": "{current} de {total}"
+		},
+		{
+			"name": "List_GoToFirstPage",
+			"value": "Ir para a primeira página"
+		},
+		{
+			"name": "List_GoToPreviousPage",
+			"value": "Ir para a página anterior"
+		},
+		{
+			"name": "List_GoToNextPage",
+			"value": "Ir para a página seguinte"
+		},
+		{
+			"name": "List_GoToLastPage",
+			"value": "Ir para a última página"
+		},
+		{
+			"name": "List_Refresh",
+			"value": "Atualizar"
+		},
+		{
+			"name": "List_OtherOptions",
+			"value": "Outras opções"
+		},
+		{
+			"name": "ErrorMessage_ConnectorBehaviourFailed",
+			"value": "Erro na execução no conetor: {message}"
+		}
+	]
+}
