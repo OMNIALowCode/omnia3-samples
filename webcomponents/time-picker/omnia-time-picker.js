@@ -1,4 +1,3 @@
-
 function isValidTimeValue(input) {
   return /^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(input);
 }
@@ -14,22 +13,28 @@ function getInput(){
 class TimePickerElement extends HTMLElement {
 
   constructor() {
-      super();
+    super();
 
-      this._container = document.createElement('div');
+    this._lastDispatchedValue = null;
+    
+    this._container = document.createElement('div');
 
-      this._input = getInput();
-      this._input.addEventListener('blur', this.valueUpdated.bind(this));
+    this._input = getInput();
+    this._input.addEventListener('blur', this.valueUpdated.bind(this));
 
-      this._container.appendChild(this._input);
+    this._container.appendChild(this._input);
   }
 
   connectedCallback() {
-      this.appendChild(this._container);
+    this.appendChild(this._container);
   }
 
   valueUpdated() {
+      if(this._input.value === this._lastDispatchedValue)
+        return;
+        
       this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: this._input.value } }));
+      this._lastDispatchedValue = this._input.value;
   }
 
   set value(newValue) {
