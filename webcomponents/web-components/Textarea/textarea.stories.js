@@ -1,25 +1,23 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-import { boolean } from '@storybook/addon-knobs';
+import { boolean, text } from '@storybook/addon-knobs';
 // import component
 import './textarea';
+import readme from './readme.md';
 
 storiesOf('Textarea', module)
-    .add('default', () => createElement(), {
-        notes: 'Notes',
-    })
-    .add('read-only', () => {
-        const textarea = createElement();
+    .add('default', () => {
+        const component = createElement();
 
-        textarea.isReadOnly = boolean('Is read only', false);
+        component.value = text('Value', 'My textarea value');
+        component.isReadOnly = boolean('Is read only', false);
 
-        return textarea;
-    });
+        return component;
+
+    }, { notes: readme });
 
 
 function createElement() {
     const element = document.createElement('omnia-textarea');
-    element.value = 'Default value';
-
     return element;
 }
