@@ -1,4 +1,4 @@
-[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/bar-chart-with-reference-value/omnia-bar-chart-with-reference-value.js)
+[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/web-components/BarChartWithReferenceValue/bar-chart-with-reference-value.js)
 
 Description
 
