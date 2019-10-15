@@ -1,4 +1,4 @@
-[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/time-picker/omnia-time-picker.js)
+[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/web-components/timepicker/time-picker.js)
 
 Description
 

@@ -1,4 +1,4 @@
-[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/bar-chart/omnia-bar-chart.js)
+[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/web-components/barchart/bar-chart.js)
 
 Description
 

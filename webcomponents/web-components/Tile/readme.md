@@ -1,4 +1,4 @@
-[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/tile/omnia-tile.js)
+[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/web-components/tile/tile.js)
 
 Description
 
