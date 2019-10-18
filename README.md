@@ -34,7 +34,7 @@ Everyone is free to contribute their developed scripts to the repository. It’s
 To contribute feel free to [Fork the repository](https://help.github.com/en/articles/fork-a-repo) and to submit a Pull Request.
 Information about creating Web Components can be found [here](https://github.com/OMNIALowCode/omnia3-samples#web-components).
 
-Any bugs detected in the scripts can be reported in the Issues section of this repository.
+Any bugs detected can be reported in the Issues section of this repository.
 
 
 ## License
