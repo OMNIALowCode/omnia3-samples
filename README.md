@@ -29,7 +29,7 @@ We are using [Storybook](https://storybook.js.org/docs/basics/introduction/) to 
 You can find documentation at [https://docs.omnialowcode.com/](https://docs.omnialowcode.com/omnia3_modeler_webcomponents.html).
 
 ## Contributing and Feedback
-Everyone is free to contribute their developed scripts to the repository. It’s really appreciated.
+Everyone is free to contribute with samples to this repository. It’s really appreciated.
 
 To contribute feel free to [Fork the repository](https://help.github.com/en/articles/fork-a-repo) and to submit a Pull Request.
 Information about creating Web Components can be found [here](https://github.com/OMNIALowCode/omnia3-samples#web-components).
