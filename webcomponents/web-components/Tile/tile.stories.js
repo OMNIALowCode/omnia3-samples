@@ -10,13 +10,14 @@ storiesOf('Tile', module)
     .add('default', () => {
         const component = createElement();
 
-        component.title = text('Title', 'Sales balance');
+        component.title = text('Title', 'Teste Tile');
         component.value = text('Value', '+2%');
         component.icon = select('Icon', faIcons, 'arrow-up');
         component.textColor = color('Text Color', '#000000');
         component.iconColor = color('Icon Color', '#1F8E22');
         component.backgroundColor = color('Background Color', '#FFEFC6');
-        component.isLoading = boolean('Is Loading?', false);
+        component.isLoading = boolean('Is Loading?', false);        
+        component.spinnerColor = color('Spinner Color', '#1F8E22');
 
         return component;
 

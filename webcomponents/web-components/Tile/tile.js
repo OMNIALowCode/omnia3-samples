@@ -12,7 +12,8 @@ class TileElement extends HTMLElement {
             textColor: null,
             backgroundColor: null,
             onClick: null,
-            isLoading: false
+            isLoading: false,
+            spinnerColor: null
         };
 
         this._tile = getTile();
@@ -68,6 +69,11 @@ class TileElement extends HTMLElement {
         this._configuration.isLoading = value === true;
         this.render();
     }
+
+    set spinnerColor(value) {
+        this._configuration.spinnerColor = value;
+        this.render();
+    }
 }
 
 function getTile() {
@@ -86,7 +92,7 @@ function getTileContent(configuration) {
 
     if (configuration.isLoading === true) {
         const container = document.createElement('div');
-        container.appendChild(getLoader(configuration.iconColor));
+        container.appendChild(getLoader(configuration.spinnerColor));
         container.className = 'col-12 text-center';
 
         row.appendChild(container);
