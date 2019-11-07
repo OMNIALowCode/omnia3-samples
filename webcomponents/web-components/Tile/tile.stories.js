@@ -16,7 +16,8 @@ storiesOf('Tile', module)
         component.textColor = color('Text Color', '#000000');
         component.iconColor = color('Icon Color', '#1F8E22');
         component.backgroundColor = color('Background Color', '#FFEFC6');
-        component.isLoading = boolean('Is Loading?', false);
+        component.isLoading = boolean('Is Loading?', false);        
+        component.loaderColor = color('Loader Color', '#1F8E22');
 
         return component;
 

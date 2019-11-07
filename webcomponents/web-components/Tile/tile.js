@@ -12,7 +12,8 @@ class TileElement extends HTMLElement {
             textColor: null,
             backgroundColor: null,
             onClick: null,
-            isLoading: false
+            isLoading: false,
+            loaderColor: null
         };
 
         this._tile = getTile();
@@ -68,6 +69,11 @@ class TileElement extends HTMLElement {
         this._configuration.isLoading = value === true;
         this.render();
     }
+
+    set loaderColor(value) {
+        this._configuration.loaderColor = value;
+        this.render();
+    }
 }
 
 function getTile() {
@@ -86,7 +92,7 @@ function getTileContent(configuration) {
 
     if (configuration.isLoading === true) {
         const container = document.createElement('div');
-        container.appendChild(getLoader(configuration.iconColor));
+        container.appendChild(getLoader(configuration.loaderColor === null ? configuration.iconColor : configuration.loaderColor));
         container.className = 'col-12 text-center';
 
         row.appendChild(container);
