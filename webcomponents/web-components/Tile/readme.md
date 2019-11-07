@@ -12,4 +12,4 @@ Description
 | iconColor | The icon's color |     black    |
 | backgroundColor | The element's background color |    white     |
 | isLoading | Sets the element in a loading state  |    false    |
-| spinnerColor | The spinner color |    black     |
+| loaderColor | The loader color |    black     |
