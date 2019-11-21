@@ -1,6 +1,5 @@
 import { configure, addDecorator, addParameters } from '@storybook/html';
 import 'bootstrap/dist/css/bootstrap.css';
-import centered from '@storybook/addon-centered/html';
 import { withKnobs } from '@storybook/addon-knobs';
 
 // automatically import all files ending in *.stories.js
@@ -11,9 +10,7 @@ function loadStories() {
     req.keys().forEach(filename => req(filename));
 }
 
-addDecorator(centered);
 addDecorator(withKnobs);
 addParameters({ viewport: {} });
 
 configure(loadStories, module);
-
