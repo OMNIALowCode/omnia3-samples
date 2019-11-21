@@ -12,7 +12,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@storybook/addon-google-analytics": "^5.2.5",
         "@storybook/addon-knobs": "^5.1.9",
         "@storybook/addon-notes": "^5.1.9",
         "@storybook/addon-viewport": "^5.1.9",
