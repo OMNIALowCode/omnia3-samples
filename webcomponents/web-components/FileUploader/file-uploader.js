@@ -255,18 +255,18 @@ class OmniaFileUpload extends HTMLElement {
     }
 
     disconnectedCallback() {
-        if (this._modalBackdrop)
+        if (this._modalBackdrop && document.body.contains(this._modalBackdrop))
             document.body.removeChild(this._modalBackdrop);
 
-        if (this._modal)
+        if (this._modal && this.contains(this._modal))
             this.removeChild(this._modal);
     }
 
     onButtonClick() {
-        if (this._modalBackdrop)
+        if (this._modalBackdrop && document.body.contains(this._modalBackdrop))
             document.body.removeChild(this._modalBackdrop);
 
-        if (this._modal)
+        if (this._modal && this.contains(this._modal))
             this.removeChild(this._modal);
 
         this._modalBackdrop = getModalBackdrop();
