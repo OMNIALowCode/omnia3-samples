@@ -48,6 +48,14 @@ class TimePickerElement extends HTMLElement {
     set isReadOnly(newValue) {
         this._input.disabled = newValue === true;
     }
+
+    set isPreviousValue(newValue) {
+        this._input.style.textDecoration = newValue === true ? 'line-through' : null;
+    }
+
+    set valueHasChanged(newValue) {
+        this._input.style.border = newValue === true ? '2px solid #ffe187' : null;
+    }
 }
 
 customElements.define('omnia-time-picker', TimePickerElement);
