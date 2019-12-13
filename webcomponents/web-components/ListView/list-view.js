@@ -24,8 +24,14 @@ function getListEntry(title, description, badge, link) {
     const entry = document.createElement('a');
     entry.className = 'list-group-item list-group-item-action';
     if (link) {
-        entry.href = link.address || "#";
-        entry.target = link.target;
+        if (link.onclick) {
+            entry.href = '#';
+            entry.onclick = link.onclick;
+        }
+        else {
+            entry.target = link.target;
+            entry.href = link.address || '#';
+        }
     }
     entry.appendChild(getEntryTitle(title, badge));
     entry.appendChild(getEntryDescription(description));
