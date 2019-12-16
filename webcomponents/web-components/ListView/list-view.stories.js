@@ -9,11 +9,17 @@ storiesOf('List View', module)
     .add('default', () => {
         const component = createElement();
 
-        component.value = object('Value', initialValue);
+        component.onLoadMore = () => onLoadMore(component);
+        component.value = object('Value', initialValue).slice(0, 2);
 
         return component;
 
     }, { notes: readme });
+
+function onLoadMore(component) {
+    component.onLoadMore = null;
+    component.value = [...component.value, ...(object('Value', initialValue).slice(2, 3))];
+}
 
 
 function createElement() {

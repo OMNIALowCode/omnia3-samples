@@ -4,6 +4,22 @@ function getListContainer() {
     return container;
 }
 
+function getLoadMoreAction(onLoadMore) {
+    var loadMoreData = document.createElement('a');
+    loadMoreData.className = "list-group-item text-center";
+    loadMoreData.text = 'Load more';
+    loadMoreData.href = "#";
+    loadMoreData.onclick = onLoadMore;
+    return loadMoreData;
+}
+
+function getEmptyMessage() {
+    var emptyMessage = document.createElement('span');
+    emptyMessage.className = "list-group-item text-center";
+    emptyMessage.innerText = 'No records found';
+    return emptyMessage;
+}
+
 function getEntryTitle(title, badge) {
     const titleContainer = document.createElement('div');
     titleContainer.className = 'd-flex w-100 justify-content-between align-items-center';
@@ -47,7 +63,6 @@ class ListViewElement extends HTMLElement {
 
         this._data = [];
         this._wrapper = getListContainer();
-
     }
 
     connectedCallback() {
@@ -55,15 +70,33 @@ class ListViewElement extends HTMLElement {
     }
 
     render() {
+
+        if (this._data == null || this._data.length === 0) {
+            this._wrapper.appendChild(getEmptyMessage());
+            return;
+        }
+
         for (const entry of this._data) {
             this._wrapper.appendChild(
                 getListEntry(entry.title, entry.description, entry.badge, entry.link));
         }
+
+        if (this._onLoadMore)
+            this._wrapper.appendChild(getLoadMoreAction(this._onLoadMore));
     }
 
     set value(newValue) {
+        this._wrapper.innerHTML = '';
         this._data = newValue;
         this.render();
+    }
+
+    get value() {
+        return this._data;
+    }
+
+    set onLoadMore(callback) {
+        this._onLoadMore = callback;
     }
 }
 
