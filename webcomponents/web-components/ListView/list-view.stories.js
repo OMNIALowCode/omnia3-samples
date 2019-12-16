@@ -31,7 +31,8 @@ const initialValue = [
     {
         title: '🍕 Anual team meeting',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae congue mauris rhoncus.',
-        badge: { text: 'Today', color: 'warning' }
+        badge: { text: 'Today', color: 'warning' },
+        thumbnail: { address: 'https://avatars0.githubusercontent.com/u/20701566', title: 'OMNIA' }
     },
     {
         title: '🛠 Project kick-off',
