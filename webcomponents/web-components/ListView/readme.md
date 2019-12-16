@@ -5,6 +5,8 @@ Description
 ### Customization
 | Property | Description                     | Default Value |
 |----------|---------------------------------|---------------|
+| loadMoreLabel | Label to load more action link. | Load more         |
+| emptyLabel | Label to display when there's no data in the value attribute. | No records found         |
 | value | The values to display in the list view: a collection of objects (example bellow). | []         |
 
 **Example**

@@ -1,22 +1,25 @@
+const defaultEmptyMessage = 'No records found';
+const defaultLoadMoreLabel = 'Load more';
+
 function getListContainer() {
     const container = document.createElement('div');
     container.className = 'list-group';
     return container;
 }
 
-function getLoadMoreAction(onLoadMore) {
+function getLoadMoreAction(onLoadMore, label) {
     var loadMoreData = document.createElement('a');
     loadMoreData.className = 'list-group-item text-center';
-    loadMoreData.text = 'Load more';
+    loadMoreData.text = label || defaultLoadMoreLabel;
     loadMoreData.href = '#';
     loadMoreData.onclick = onLoadMore;
     return loadMoreData;
 }
 
-function getEmptyMessage() {
+function getEmptyMessage(label) {
     var emptyMessage = document.createElement('span');
     emptyMessage.className = 'list-group-item text-center';
-    emptyMessage.innerText = 'No records found';
+    emptyMessage.innerText = label || defaultEmptyMessage;
     return emptyMessage;
 }
 
@@ -76,7 +79,6 @@ function getListEntry(title, description, badge, link, thumbnail) {
     return entry;
 }
 
-
 class ListViewElement extends HTMLElement {
 
     constructor() {
@@ -91,9 +93,10 @@ class ListViewElement extends HTMLElement {
     }
 
     render() {
+        this._wrapper.innerHTML = '';
 
         if (this._data == null || this._data.length === 0) {
-            this._wrapper.appendChild(getEmptyMessage());
+            this._wrapper.appendChild(getEmptyMessage(this._defaultEmptyMessage));
             return;
         }
 
@@ -103,11 +106,10 @@ class ListViewElement extends HTMLElement {
         }
 
         if (this._onLoadMore)
-            this._wrapper.appendChild(getLoadMoreAction(this._onLoadMore));
+            this._wrapper.appendChild(getLoadMoreAction(this._onLoadMore, this._loadMoreLabel));
     }
 
     set value(newValue) {
-        this._wrapper.innerHTML = '';
         this._data = newValue;
         this.render();
     }
@@ -118,6 +120,17 @@ class ListViewElement extends HTMLElement {
 
     set onLoadMore(callback) {
         this._onLoadMore = callback;
+        this.render();
+    }
+
+    set emptyLabel(newValue) {
+        this._defaultEmptyMessage = newValue;
+        this.render();
+    }
+
+    set loadMoreLabel(newValue) {
+        this._loadMoreLabel = newValue;
+        this.render();
     }
 }
 

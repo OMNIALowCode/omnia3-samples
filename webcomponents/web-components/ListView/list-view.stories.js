@@ -1,6 +1,6 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-import { object } from '@storybook/addon-knobs';
+import { object, text } from '@storybook/addon-knobs';
 // import component
 import './list-view';
 import readme from './readme.md';
@@ -11,6 +11,8 @@ storiesOf('List View', module)
 
         component.onLoadMore = () => onLoadMore(component);
         component.value = object('Value', initialValue).slice(0, 2);
+        component.loadMoreLabel = text('Label - Load more action');
+        component.emptyLabel = text('Label - Empty list');
 
         return component;
 
