@@ -9,11 +9,8 @@ import readme from './readme.md';
 storiesOf('Selectbox', module)
     .add('default', () => {
         const component = createElement();
-        
-      //  component.options = [{ value: "Approve", text: 'Approve' }, { value: "Reject", text: 'Reject' }];
 
         component.options = object('Value', initialValue);
-
 
         return component;
 
