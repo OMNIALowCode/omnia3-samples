@@ -5,4 +5,17 @@ Description
 ### Customization
 | Property | Description                     | Default Value |
 |----------|---------------------------------|---------------|
-| readOnly | Sets the elements as read only | false         |
+| isReadOnly | Sets the elements as read only | false         |
+| options | Sets of options to display on the select box (see example below) | []         |
+
+**Example**
+
+[
+
+    { value: "Approved", text: 'Approved' },
+
+    { value: "Almost", text: 'Almost' }
+
+        ...
+
+]

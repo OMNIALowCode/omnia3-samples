@@ -1,16 +1,18 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
-import { object } from '@storybook/addon-knobs';
+import { object, boolean, text } from '@storybook/addon-knobs';
 
 // import component
 import './selectbox';
 import readme from './readme.md';
 
-storiesOf('Selectbox', module)
+storiesOf('Select box', module)
     .add('default', () => {
         const component = createElement();
 
-        component.options = object('Value', initialValue);
+        component.isReadOnly = boolean('Is read only', false);
+        component.options = object('Options', initialValue);
+        component.value = text('Value', initialValue[2].value);
 
         return component;
 
@@ -23,9 +25,9 @@ function createElement() {
 }
 
 const initialValue = [
-    { serievalue: "Approved", text: 'Approved' },
-    { serievalue: "Almost", text: 'Almost' },
-    { serievalue: "Nearly", text: 'Nearly' },
-    { serievalue: "There", text: 'There' },
-    { serievalue: "Past", text: 'Past' }
+    { value: 'Approved', text: 'Approved' },
+    { value: 'Almost', text: 'Almost' },
+    { value: 'Nearly', text: 'Nearly' },
+    { value: 'There', text: 'There' },
+    { value: 'Past', text: 'Past' }
 ];

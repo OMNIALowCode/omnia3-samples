@@ -33,6 +33,7 @@ class OmniaSelect extends HTMLElement {
         this._text = "";
         this._translator = null;
 		this.valueUpdated = this.valueUpdated.bind(this);
+		this._value = "";
 
 		this._select = document.createElement('select');
 		this._select.setAttribute('class', 'form-control');
@@ -40,7 +41,6 @@ class OmniaSelect extends HTMLElement {
   
 	connectedCallback() {
 		this.renderOptions();
-		this._select.selectedIndex = 0;
 		
 		this._select.addEventListener('change', this.valueUpdated);
 		
