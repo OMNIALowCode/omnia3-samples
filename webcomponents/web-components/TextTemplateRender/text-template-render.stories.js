@@ -18,7 +18,7 @@ httpClient.doPost = Mocks.Function(
                 <h1 class="display-4">Hello, world!</h1>
                 <p class="lead">Suspendisse potenti. Fusce scelerisque orci lorem, in volutpat leo vehicula et. Nam bibendum eros nec semper tempor.</p>
                 <hr class="my-4">
-                <p class="text-warning">
+                <p class="text-info">
                     This is only for demonstration purpose.<br />
                     Note: Text template parameters won't be rendered.
                 </p>

@@ -20,10 +20,9 @@ function getListContainer() {
 }
 
 function getLoadMoreAction(onLoadMore, label) {
-    var loadMoreData = document.createElement('a');
-    loadMoreData.className = 'list-group-item text-center';
-    loadMoreData.text = label || defaultLoadMoreLabel;
-    loadMoreData.href = '#';
+    var loadMoreData = document.createElement('button');
+    loadMoreData.className = 'list-group-item text-center btn-link';
+    loadMoreData.innerText = label || defaultLoadMoreLabel;
     loadMoreData.onclick = onLoadMore;
     return loadMoreData;
 }
@@ -68,8 +67,7 @@ function getListEntry(title, description, badge, link, thumbnail) {
         if (link.onclick) {
             entry.href = '#';
             entry.onclick = link.onclick;
-        }
-        else {
+        } else {
             entry.target = link.target;
             entry.href = link.address || '#';
         }
@@ -131,8 +129,7 @@ class ListViewElement extends HTMLElement {
                     this._isLoading = true;
                     this.render();
                     this._onLoadMore();
-                }
-                , this._loadMoreLabel));
+                }, this._loadMoreLabel));
 
 
 
