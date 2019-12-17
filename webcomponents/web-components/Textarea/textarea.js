@@ -29,6 +29,14 @@ class TextareaElement extends HTMLElement {
     set isReadOnly(newValue) {
         this.textarea.disabled = (newValue === true);
     }
+
+    set isPreviousValue(newValue) {
+        this.textarea.style.textDecoration = newValue === true ? 'line-through' : null;
+    }
+
+    set valueHasChanged(newValue) {
+        this.textarea.style.border = newValue === true ? '2px solid #ffe187' : null;
+    }
 }
 
 customElements.define('omnia-textarea', TextareaElement);

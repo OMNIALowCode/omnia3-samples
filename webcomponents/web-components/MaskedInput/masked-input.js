@@ -107,6 +107,14 @@ class MaskedInputElement extends HTMLElement {
     set validator(newValue) {
         this._validator = newValue;
     }
+
+    set isPreviousValue(newValue) {
+        this._input.style.textDecoration = newValue === true ? 'line-through' : null;
+    }
+
+    set valueHasChanged(newValue) {
+        this._input.style.border = newValue === true ? '2px solid #ffe187' : null;
+    }
 }
 
 customElements.define('omnia-masked-input', MaskedInputElement);
