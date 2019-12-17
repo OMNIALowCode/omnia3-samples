@@ -451,7 +451,12 @@ class OmniaFileUpload extends HTMLElement {
 
     set state(newValue) {
         this._settings.state = newValue;
-
+		
+		if(this._settings.state._code == null)
+			this._button.disabled = true;
+		else
+			this._button.disabled = false;
+			
         if (this._settings.state != null && this._settings.lastCodeValue !== this._settings.state._code) {
             this._settings.lastCodeValue = this._settings.state._code;
             this.save();
