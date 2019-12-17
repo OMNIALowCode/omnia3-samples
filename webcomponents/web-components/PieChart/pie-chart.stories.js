@@ -7,11 +7,11 @@ import readme from './readme.md';
 
 storiesOf('Pie Chart', module)
     .add('default', () => {
-        const textarea = createElement();
+        const chart = createElement();
 
-        textarea.value = object('Value', initialValue);
+        chart.value = object('Value', initialValue);
 
-        return textarea;
+        return chart;
     }, { notes: readme });
 
 
