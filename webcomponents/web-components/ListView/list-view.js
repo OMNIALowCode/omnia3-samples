@@ -1,6 +1,18 @@
 const defaultEmptyMessage = 'No records found';
 const defaultLoadMoreLabel = 'Load more';
 
+function getLoader() {
+    const icon = document.createElement('i');
+    icon.className = `fa fa-fw fa-3x fa-spin fa-circle-o-notch`;
+    icon.style.color = 'var(--primary)';
+
+    var loaderContainer = document.createElement('div');
+    loaderContainer.className = 'list-group-item text-center';
+    loaderContainer.appendChild(icon);
+
+    return loaderContainer;
+}
+
 function getListContainer() {
     const container = document.createElement('div');
     container.className = 'list-group';
@@ -84,6 +96,7 @@ class ListViewElement extends HTMLElement {
     constructor() {
         super();
 
+        this._isLoading = true;
         this._data = [];
         this._wrapper = getListContainer();
     }
@@ -95,22 +108,39 @@ class ListViewElement extends HTMLElement {
     render() {
         this._wrapper.innerHTML = '';
 
-        if (this._data == null || this._data.length === 0) {
+        if (!this._isLoading && (this._data == null || this._data.length === 0)) {
             this._wrapper.appendChild(getEmptyMessage(this._defaultEmptyMessage));
             return;
         }
+
 
         for (const entry of this._data) {
             this._wrapper.appendChild(
                 getListEntry(entry.title, entry.description, entry.badge, entry.link, entry.thumbnail));
         }
 
+
+        if (this._isLoading === true) {
+            this._wrapper.appendChild(getLoader());
+            return;
+        }
+
         if (this._onLoadMore)
-            this._wrapper.appendChild(getLoadMoreAction(this._onLoadMore, this._loadMoreLabel));
+            this._wrapper.appendChild(getLoadMoreAction(
+                () => {
+                    this._isLoading = true;
+                    this.render();
+                    this._onLoadMore();
+                }
+                , this._loadMoreLabel));
+
+
+
     }
 
     set value(newValue) {
         this._data = newValue;
+        this._isLoading = false;
         this.render();
     }
 
