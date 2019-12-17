@@ -10,8 +10,9 @@ import readme from './readme.md';
 // context
 const context = ContextMock();
 const httpClient = HttpClientMock();
-httpClient.doPost = Mocks.Function(Promise.resolve({
-    data: `
+httpClient.doPost = Mocks.Function(
+    Promise.resolve({
+        data: new Blob([`
         <div>
             <div class="jumbotron">
                 <h1 class="display-4">Hello, world!</h1>
@@ -24,12 +25,13 @@ httpClient.doPost = Mocks.Function(Promise.resolve({
                 <a class="btn btn-primary btn-lg" href="#" role="button">Proin vel</a>
             </div>
         </div>
-    `
-}));
+    `], { type: 'text/html' })
+    })
+);
 context.createApiHttpClient = Mocks.Function(httpClient);
 
 storiesOf('Text Template render', module)
-    .add('default', () => { 
+    .add('default', () => {
         const component = createElement();
 
         component.context = context;
