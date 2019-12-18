@@ -30,7 +30,7 @@ httpClient.doPost = Mocks.Function(
 );
 context.createApiHttpClient = Mocks.Function(httpClient);
 
-storiesOf('Text Template render', module)
+storiesOf('Visualization|Text Template render', module)
     .add('default', () => {
         const component = createElement();
 
