@@ -5,7 +5,7 @@ import { boolean, text } from '@storybook/addon-knobs';
 import './textarea';
 import readme from './readme.md';
 
-storiesOf('Textarea', module)
+storiesOf('Data Input|Textarea', module)
     .add('default', () => {
         const component = createElement();
 

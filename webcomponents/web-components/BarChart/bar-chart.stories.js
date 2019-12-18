@@ -5,7 +5,7 @@ import { object } from '@storybook/addon-knobs';
 import './bar-chart';
 import readme from './readme.md';
 
-storiesOf('Bar Chart', module)
+storiesOf('Visualization|Bar Chart', module)
     .add('default', () => {
         const chart = createElement();
 

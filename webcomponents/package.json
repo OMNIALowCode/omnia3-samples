@@ -12,15 +12,16 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@storybook/addon-knobs": "^5.1.9",
-        "@storybook/addon-notes": "^5.1.9",
-        "@storybook/addon-viewport": "^5.1.9",
         "bootstrap": "4.3.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.5.5",
-        "@storybook/addon-centered": "^5.1.9",
-        "@storybook/html": "^5.1.9",
+        "@babel/core": "^7.7.5",
+        "@storybook/addon-centered": "^5.2.8",
+        "@storybook/addon-docs": "^5.2.8",
+        "@storybook/addon-knobs": "^5.2.8",
+        "@storybook/addon-notes": "^5.2.8",
+        "@storybook/addon-viewport": "^5.2.8",
+        "@storybook/html": "^5.2.8",
         "babel-loader": "^8.0.6"
     }
 }

@@ -5,7 +5,7 @@ import { boolean, text } from '@storybook/addon-knobs';
 import './time-picker';
 import readme from './readme.md';
 
-storiesOf('Time Picker', module)
+storiesOf('Data Input|Time Picker', module)
     .add('default', () => {
         const textarea = createElement();
 
