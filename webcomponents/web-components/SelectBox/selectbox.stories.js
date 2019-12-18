@@ -6,7 +6,7 @@ import { object, boolean, text } from '@storybook/addon-knobs';
 import './selectbox';
 import readme from './readme.md';
 
-storiesOf('Select box', module)
+storiesOf('Data Input|Select box', module)
     .add('default', () => {
         const component = createElement();
 

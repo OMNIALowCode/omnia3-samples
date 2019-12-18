@@ -5,7 +5,7 @@ import { object, boolean, text } from '@storybook/addon-knobs';
 import './file-uploader';
 import readme from './readme.md';
 
-storiesOf('File Uploader', module)
+storiesOf('Data Input|File Uploader', module)
     .add('default', () => {
         const element = createElement();
 

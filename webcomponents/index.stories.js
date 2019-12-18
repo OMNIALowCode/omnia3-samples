@@ -1,7 +1,7 @@
 import { document, console } from 'global';
 import { storiesOf } from '@storybook/html';
 
-storiesOf('Introduction', module)
+storiesOf('Overview|Introduction', module)
     .addParameters({ info: { disable: true } })
     .add('About', () => {
         return `

@@ -5,7 +5,7 @@ import { object, number } from '@storybook/addon-knobs';
 import './bar-chart-with-reference-value';
 import readme from './readme.md';
 
-storiesOf('Bar Chart with reference value', module)
+storiesOf('Visualization|Bar Chart with reference value', module)
     .add('default', () => {
         const chart = createElement();
 

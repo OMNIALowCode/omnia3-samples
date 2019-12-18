@@ -5,7 +5,7 @@ import { object } from '@storybook/addon-knobs';
 import './pie-chart';
 import readme from './readme.md';
 
-storiesOf('Pie Chart', module)
+storiesOf('Visualization|Pie Chart', module)
     .add('default', () => {
         const chart = createElement();
 

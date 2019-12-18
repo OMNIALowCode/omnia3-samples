@@ -5,7 +5,7 @@ import { boolean, text } from '@storybook/addon-knobs';
 import './masked-input';
 import readme from './readme.md';
 
-storiesOf('Masked Input', module)
+storiesOf('Data Input|Masked Input', module)
     .add('default', () => {
         const textarea = createElement();
 

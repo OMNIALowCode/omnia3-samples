@@ -5,7 +5,7 @@ import { object } from '@storybook/addon-knobs';
 import './line-chart';
 import readme from './readme.md';
 
-storiesOf('Line Chart', module)
+storiesOf('Visualization|Line Chart', module)
     .add('default', () => {
         const chart = createElement();
 
