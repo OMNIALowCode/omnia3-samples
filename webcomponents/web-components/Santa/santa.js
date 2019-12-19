@@ -11,7 +11,6 @@ const css = `::selection {
 	  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,105,11,1);
 	  -moz-box-shadow: 0px 0px 10px 0px rgba(0,105,11,1);
 	  box-shadow: 0px 0px 10px 0px rgba(0,105,11,1);
-	  //border: solid 10px white;
   }
   
   body {
