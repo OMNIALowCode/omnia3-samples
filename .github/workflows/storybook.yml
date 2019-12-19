@@ -1,3 +1,7 @@
+on: 
+  push:
+    paths: ["**"]
+
 name: Publish webcomponents change
     
 jobs:
