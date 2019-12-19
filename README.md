@@ -23,6 +23,9 @@ We are using [Storybook](https://storybook.js.org/docs/basics/introduction/) to 
     * *.stories.js: Contains the Storybook's [stories](https://storybook.js.org/docs/guides/guide-html/#step-4-write-your-stories);
     * readme.md: The Web Component's documentation.
 
+**Build static storybook site**
+
+Run In the command line `npm run build-storybook`
 
 ## Documentation
 
