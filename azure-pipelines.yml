@@ -14,9 +14,10 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-  workingDirectory: './webcomponents'
+  
 
 - script: |
     npm install
     npm run build-storybook
+  workingDirectory: './webcomponents'
   displayName: 'npm install and build storybook'
