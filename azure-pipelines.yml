@@ -24,9 +24,9 @@ steps:
   - task: CopyFiles@2
     inputs:
       contents: |
-        '**/*'
-        '!.git/**/*'
-        '!**/node_modules/**'
+        **/**
+        !.git/**/*
+        !**/node_modules/**
       targetFolder: $(Build.ArtifactStagingDirectory)
 
   - task: PublishBuildArtifacts@1
