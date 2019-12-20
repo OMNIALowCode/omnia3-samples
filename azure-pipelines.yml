@@ -21,8 +21,16 @@ steps:
     workingDirectory: './webcomponents'
     displayName: 'npm install and build storybook'
 
+  - task: CopyFiles@2
+    inputs:
+      contents: |
+        '**/*'
+        '!.git/**/*'
+        '!**/node_modules/**'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: './'
+      PathtoPublish: $(Build.ArtifactStagingDirectory)
       ArtifactName: 'drop'
       publishLocation: 'Container'
