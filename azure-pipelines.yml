@@ -25,6 +25,7 @@ steps:
     inputs:
       contents: |
         **/**
+        !.gitignore
         !.git/**/*
         !**/node_modules/**
       targetFolder: $(Build.ArtifactStagingDirectory)
