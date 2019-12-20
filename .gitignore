@@ -3,3 +3,4 @@
 **/packages/*
 *.nuget.props
 *.nuget.targets
+/webcomponents/docs/
