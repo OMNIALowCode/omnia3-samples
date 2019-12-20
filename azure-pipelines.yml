@@ -24,6 +24,6 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: './'
+    PathtoPublish: './webcomponents/docs'
     ArtifactName: 'drop'
     publishLocation: 'Container'
