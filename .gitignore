@@ -1,5 +1,4 @@
 **/node_modules/
-webcomponents/node_modules/*
 *.nupkg
 **/packages/*
 *.nuget.props
