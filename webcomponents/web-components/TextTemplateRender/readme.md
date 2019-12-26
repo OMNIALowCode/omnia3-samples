@@ -9,12 +9,10 @@
 
 **Example**
 
+```JSON
 {
-  
- parameter1: "parameter1 value",
-
+    parameter1: "parameter1 value",
     parameter2: "parameter2 value",
-
-    ...
-
+    parameterN: "..."
 }
+```
