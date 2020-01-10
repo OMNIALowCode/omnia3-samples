@@ -18,6 +18,6 @@ To submit your contribution you’ll need to use Git (if you’ve never used it 
 
 ### Stay Tuned
 
-In order to keep up with all our developments and contributions you can “Watch” (or “Star”) our repositories. If you prefer, we also have a weekly newsletter that you can subscribe right [here] (https://mailchi.mp/ae3201174e2a/omnianewsletter). 
+In order to keep up with all our developments and contributions you can “Watch” (or “Star”) our repositories. If you prefer, we also have a weekly newsletter that you can subscribe right [here](https://mailchi.mp/ae3201174e2a/omnianewsletter). 
 
 If, for any reason, you have doubts regarding this process feel free to email us at <support@omnialowcode.com>. We'll be happy to help.
