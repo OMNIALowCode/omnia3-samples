@@ -1,12 +1,12 @@
-## Contributing and Feedback
+## Contributing
 
 If you're planning on contributing to this repository there are two things you need to read first: 
 
 1. Thank you for being awesome ✌ 
 2. Please read the following guidelines so that you have all the necessary information to correctly perform pull requests.
 
-### Contribute guidelines
-**Important**: Before you start developing something (anything), please submit an [issue](../issues) first so that our team can evaluate if your contribution makes sense within that context (we can already be working on something similar to your contribution, for example). 
+### Guidelines
+**Important**: Before you start developing something (anything), please submit an [issue](../../issues) first so that our team can evaluate if your contribution makes sense within that context (we can already be working on something similar to your contribution, for example). 
 
 To submit your contribution you’ll need to use Git (if you’ve never used it before, please follow [this helpful link](https://rogerdudler.github.io/git-guide/)) or directly use [GitHub](https://guides.github.com/activities/hello-world/). Now, please, follow the next steps:
 
