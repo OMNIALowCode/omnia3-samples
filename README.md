@@ -36,7 +36,9 @@ Run In the command line `npm run build-storybook`
 
 You can find documentation at [https://docs.omnialowcode.com/](https://docs.omnialowcode.com/omnia3_modeler_webcomponents.html).
 
-## [Contributing](CONTRIBUTING.md)
+## Contributing
+
+See contribution Guidelines [here](CONTRIBUTING.md).
 
 Information about creating Web Components can be found [here](https://github.com/OMNIALowCode/omnia3-samples#web-components).
 
