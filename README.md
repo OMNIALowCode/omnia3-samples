@@ -12,12 +12,12 @@ Samples repository for the OMNIA Platform version 3.
 
 ### Adding new themes
 
-In order to add a new theme to a tenant you need to do the following:
+In order to add a new theme to a tenant, here's what you need to do:
 
-- Open theme's .scss file (Example: Dark Theme .scss);
+- Open the theme's .scss file (Example: Dark Theme .scss);
 - Copy all styles;
 - Create a new theme in the Modeler and paste styles;
-- Clean & Build, and that's it.
+- Clean & Build your application.
  
 ## Web Components
 
