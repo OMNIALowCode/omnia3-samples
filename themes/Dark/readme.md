@@ -4,9 +4,9 @@ This theme is a dark mode version of the OMNIA default theme.
 
 ## Look & Feel
 
-![Dashboard with Web Components](themes/Dark/imgs/Dark-Theme-Home.jpg)
-![Lists](themes/Dark/imgs/Dark-Theme-List.jpg)
-![Forms](themes/Dark/imgs/Dark-Theme-LostOfForms.jpg)
+![Dashboard with Web Components](../themes/Dark/imgs/Dark-Theme-Home.jpg)
+![Lists](../../themes/Dark/imgs/Dark-Theme-List.jpg)
+![Forms](../../../themes/Dark/imgs/Dark-Theme-LostOfForms.jpg)
 
 ## Documentation
 
