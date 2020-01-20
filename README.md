@@ -2,10 +2,23 @@
 
 Samples repository for the OMNIA Platform version 3.
 
+**Themes**: [Click here to get the available themes](https://github.com/OMNIALowCode/omnia3-samples/tree/master/themes)
+
 **Languages**: [Click here to get the available languages](https://github.com/OMNIALowCode/omnia3-samples/tree/master/languages)
 
 **Web Components**: [Click here to see the samples in action](https://omnialowcode.github.io/omnia3-samples/webcomponents/docs)
 
+## Themes
+
+### Adding new themes
+
+In order to add a new theme to a tenant you need to do the following:
+
+- Open theme's .scss file (Example: Dark Theme .scss);
+- Copy all styles;
+- Create a new theme in the Modeler and paste styles;
+- Clean & Build, and that's it.
+ 
 ## Web Components
 
 ### Using storybook
