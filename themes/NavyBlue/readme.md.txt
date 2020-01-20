@@ -5,8 +5,8 @@ This theme is the first original theme for the OMNIA Platform.
 ## Look & Feel
 
 ![Dashboard with Web Components](../../themes/NavyBlue/imgs/NavyBlue-Theme-Home.jpg)
-![Lists](../../themes/Dark/imgs/NavyBlue-Theme-List.jpg)
-![Forms](../../themes/Dark/imgs/NavyBlue-Theme-LotsOfForms.jpg)
+![Lists](../../themes/NavyBlue/imgs/NavyBlue-Theme-List.jpg)
+![Forms](../../themes/NavyBlue/imgs/NavyBlue-Theme-LotsOfForms.jpg)
 
 ## Adding and Editing Themes
 
