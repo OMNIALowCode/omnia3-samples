@@ -4,7 +4,7 @@ Repository for OMNIA Platform visual Themes.
 
 
 
-## Original Theme
+<p align="center">## Original Theme</p>
 
 ![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
