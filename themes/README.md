@@ -4,9 +4,9 @@ Repository for OMNIA Platform visual Themes.
 
 
 
-<center>## Original Theme</center>
+## Original Theme
 
-<center>![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)</center>
+![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
 ## Original Dark Theme
 
