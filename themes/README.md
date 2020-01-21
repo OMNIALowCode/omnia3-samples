@@ -2,11 +2,11 @@
 
 In this repository you'll find all currently available, fully compatible, platform themes.
 
-If you need any help applying a theme just follow this link and read our step-by-step guide.
+If you need any help applying a theme just follow this [link](#) and read our step-by-step guide.
 
 
 
-## Original ##### [(view theme)](../themes/Dark)
+## Original [(view theme)](../themes/Dark)
 
 ![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
