@@ -1,12 +1,28 @@
-# OMNIA 3 Samples
+# OMNIA 3 Themes
 
-Samples repository for the OMNIA Platform version 3.
+Repository for OMNIA Platform visual Themes.
 
-**Languages**: [Click here to get the available languages](https://github.com/OMNIALowCode/omnia3-samples/tree/master/languages)
+## OMNIA Original Theme
 
-**Web Components**: [Click here to see the samples in action](https://omnialowcode.github.io/omnia3-samples/webcomponents/docs)
+[OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
-## Web Components
+## OMNIA Original Dark Theme
+
+[OMNIA Original Dark Theme Preview](../../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
+
+## OMNIA Navy Blue Theme
+
+[OMNIA Navy Blue Theme Preview](../../../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
+
+
+
+
+
+
+
+
+
+
 
 ### Using storybook
 
