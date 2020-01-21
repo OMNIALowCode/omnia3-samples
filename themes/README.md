@@ -4,15 +4,15 @@ Repository for OMNIA Platform visual Themes.
 
 ## OMNIA Original Theme
 
-[OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
+![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
 ## OMNIA Original Dark Theme
 
-[OMNIA Original Dark Theme Preview](../../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
+![OMNIA Original Dark Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
 ## OMNIA Navy Blue Theme
 
-[OMNIA Navy Blue Theme Preview](../../../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
+![OMNIA Navy Blue Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
 
 
