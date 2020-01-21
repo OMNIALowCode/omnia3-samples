@@ -4,7 +4,7 @@ Repository for OMNIA Platform visual Themes.
 
 
 
-<h2 align="center">Original Theme</h2>
+## Original Theme
 
 ![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
@@ -18,17 +18,17 @@ Repository for OMNIA Platform visual Themes.
 
 
 
-<div class="container" style="width:100%;">
-    <div class="theme" style="width:50%;">
-        <h2>Original Theme</h2>
-        <img src="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg" href="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg">
+<div style="width:100%;">
+    <div style="width:50%;">
+        <h2 style="max-width:100%;">Original Theme</h2>
+        <img style="max-width:100%;" src="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg" href="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg">
     </div>
-    <div class="theme" style="width:50%;">
-        <h2>Original Dark Theme</h2>
-        <img src="../themes/imgs/Dark-Theme-Home-github-preview.jpg" href="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg">
+    <div style="width:50%;">
+        <h2 style="max-width:100%;">Original Dark Theme</h2>
+        <img style="max-width:100%;" src="../themes/imgs/Dark-Theme-Home-github-preview.jpg" href="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg">
     </div>
-    <div class="theme" style="width:50%;">
-        <h2>Navy Blue Theme</h2>
-        <img src="../themes/imgs/NavyBlue-Theme-Home-github-preview.jpg" href="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg">
+    <div style="width:50%;">
+        <h2 style="max-width:100%;">Navy Blue Theme</h2>
+        <img style="max-width:100%;" src="../themes/imgs/NavyBlue-Theme-Home-github-preview.jpg" href="../themes/imgs/OMNIA-Theme-Home-github-preview.jpg">
     </div>
 </div>
