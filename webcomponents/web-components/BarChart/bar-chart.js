@@ -27,7 +27,7 @@ class BarChartElement extends HTMLElement {
     }
 
     getColor(index) {
-        return ['rgb(54, 162, 235)', 'rgb(75, 192, 192)', 'rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)'][index % 5];
+        return ['rgb(54, 162, 235)', 'rgb(75, 192, 192)', 'rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)'][index % 5]; //here's where you control the colors of the bars
     }
 
     render() {
@@ -46,7 +46,7 @@ class BarChartElement extends HTMLElement {
             const data = this.chartData.map(entry => entry.datavalue);
 
             const config = {
-                type: 'bar',
+                type: 'bar', //here's where you change the type of Bar Chart you want. Options: bar | horizontalBar
                 data: {
                     labels: labels,
                     responsive: false,

@@ -50,11 +50,11 @@ class BarChartWithReferenceValueElement extends HTMLElement {
                 labels.push(entry.serievalue);
                 data.push(entry.datavalue);
 
-                backgroundColors.push(entry.datavalue < referenceValue ? 'rgb(54, 162, 235)' : 'rgb(255, 99, 132)');
+                backgroundColors.push(entry.datavalue < referenceValue ? 'rgb(54, 162, 235)' : 'rgb(255, 99, 132)'); //here's where you control background colors
             }
 
             const config = {
-                type: 'bar',
+                type: 'bar', //here's where you control the type of the Bar Chart. Options: bar | horizontalBar
                 data: {
                     labels: labels,
                     responsive: false,

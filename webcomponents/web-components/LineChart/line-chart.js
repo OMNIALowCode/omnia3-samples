@@ -42,13 +42,13 @@ class LineChartElement extends HTMLElement {
             const data = this.chartData.map(entry => entry.datavalue);
 
             const config = {
-                type: 'line',
+                type: 'line', //here's where you control the type of line chart
                 data: {
                     labels: labels,
                     datasets: [{
                         label: '',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(255, 99, 132)', //here's where you control the background color
+                        borderColor: 'rgb(255, 99, 132)', //here's where you control the border color
                         data: data,
                         fill: false,
                     }]
