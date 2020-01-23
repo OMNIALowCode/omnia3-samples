@@ -1,0 +1,47 @@
+// OMNIA Low-Code
+// Original Theme 1.0
+
+//
+// Bootstrap Default Color System
+//
+// Changes in color variables go here
+//
+
+// BODY
+$body-bg: #fff;
+$body-color: #212529;
+
+ 
+// GENERAL
+$content-size: 96%;
+$color-page-indicator-bar-height: 0.25rem;
+$section-border-color: rgba(0, 0, 0, 0.16);
+
+
+// OMNIA Custom Variables
+
+// SIDE PANEL
+// Right-side panel that opens when the user accesses Notifications or History Tab.
+$side-panel-bg-color: $body-bg;
+$side-panel-min-size-open: 300px;
+$side-panel-size-sm-open: 70%;
+$side-panel-border-color: $section-border-color;
+ 
+// SIDEBAR
+// Sidebar Menu
+$sidebar-bg-color: $body-bg;
+$sidebar-border-color: $section-border-color;
+$sidebar-color: $body-color;
+$sidebar-icon-color: lighten($sidebar-color, 35%);
+$sidebar-min-size: 50px;
+$sidebar-min-size-open: $side-panel-min-size-open;
+$sidebar-height-sm-open: 50px;
+$sidebar-size-sm: $sidebar-min-size;
+$sidebar-size-sm-open: $side-panel-size-sm-open;
+ 
+// TOPBAR
+// Topbar navigation
+$topbar-height: 56px;
+$topbar-bg-color: $body-bg;
+$topbar-border-color: $section-border-color;
+$topbar-color: $body-color;
