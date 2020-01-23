@@ -6,7 +6,7 @@ If you need any help applying a theme just follow this [link](#) and read our st
 
 
 
-## Original [(view theme)](../themes/Dark)
+## Original [(view theme)](../themes/Original)
 
 ![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
