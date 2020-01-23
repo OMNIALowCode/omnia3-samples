@@ -10,7 +10,7 @@ If you need any help applying a theme just follow this [link](#) and read our st
 
 ![OMNIA Original Theme Preview](../themes/imgs/OMNIA-Theme-Home-github-preview.jpg)
 
-## Original Dark [(view theme)](../themes/Dark)
+## Dark [(view theme)](../themes/Dark)
 
 ![OMNIA Original Dark Theme Preview](../themes/imgs/Dark-Theme-Home-github-preview.jpg)
 
