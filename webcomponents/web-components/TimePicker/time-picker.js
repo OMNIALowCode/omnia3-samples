@@ -1,3 +1,6 @@
+// OMNIA Low-Code Development Platform
+// Time Picker Web Component
+
 function isValidTimeValue(input) {
     return /^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(input);
 }

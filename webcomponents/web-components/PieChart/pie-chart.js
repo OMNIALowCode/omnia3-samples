@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Pie Chart Web Component
+
+// Developer Notes: Below you'll find three aspects of the component that you can easily control. On Line 35 you control the colors of the chart and on line 54 you can edit the type of chart.
+
 function getCanvas() {
     const canvas = document.createElement('canvas');
     canvas.width = '500';

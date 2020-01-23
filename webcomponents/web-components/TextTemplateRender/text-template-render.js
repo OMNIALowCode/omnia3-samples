@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Text Template Render Web Component
+
+// Developer Notes: This component allows you to render text templates and place them in you app.
+
 class TextTemplateRenderElement extends HTMLElement {
 
     constructor() {

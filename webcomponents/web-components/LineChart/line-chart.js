@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Line Chart Web Component
+
+// Developer Notes: Below you'll find three aspects of the component that you can easily control. On Line 50 you control the type of chart and on lines 55 and 56 you control the colors.
+
 function getCanvas() {
     const canvas = document.createElement('canvas');
     canvas.width = '500';

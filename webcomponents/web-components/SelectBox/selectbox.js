@@ -1,4 +1,8 @@
-// The component only supports en-us and pt-pt languages
+// OMNIA Low-Code Development Platform
+// Select Box Web Component
+
+// Developer Notes: This component only supports en-us and pt-pt languages.
+
 const TRANSLATIONS = {
     default: {
         DefaultOption: 'Please select a value',

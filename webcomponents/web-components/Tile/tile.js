@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Tile Web Component
+
+// Developer Notes: This component has many visual options for icons and colors, do visit our OMNIA Storybook and try the knobs first.
+
 class TileElement extends HTMLElement {
 
     constructor() {

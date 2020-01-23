@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Bar Chart Web Component
+
+// Developer Notes: Below you'll find two aspects of the component that you can easily control. On Line 36 you control the colors of the bars and on line 55 you can edit the type of chart.
+
 function getCanvas() {
     const canvas = document.createElement('canvas');
     canvas.width = '500';
