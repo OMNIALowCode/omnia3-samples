@@ -87,3 +87,9 @@ $navbar-light-hover-color: $primary;
 // Cards
 $card-cap-bg: $table-hover-bg;
 $card-bg: $gray-200;
+
+// ListView Web Component Styles
+$list-group-action-color:           $body-color;
+$list-group-bg:                     $body-bg;
+$list-group-hover-bg:               lighten($body-bg, 2%);
+$list-group-action-active-bg:       lighten($body-bg, 4%);

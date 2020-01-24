@@ -45,3 +45,9 @@ $topbar-height: 56px;
 $topbar-bg-color: $body-bg;
 $topbar-border-color: $section-border-color;
 $topbar-color: $body-color;
+
+// ListView Web Component Styles
+$list-group-action-color:           $body-color;
+$list-group-bg:                     $body-bg;
+$list-group-hover-bg:               lighten($body-bg, 2%);
+$list-group-action-active-bg:       lighten($body-bg, 4%);
