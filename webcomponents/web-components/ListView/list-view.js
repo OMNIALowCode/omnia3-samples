@@ -1,3 +1,6 @@
+// OMNIA Low-Code Development Platform
+// List View Web Component
+
 const defaultEmptyMessage = 'No records found';
 const defaultLoadMoreLabel = 'Load more';
 

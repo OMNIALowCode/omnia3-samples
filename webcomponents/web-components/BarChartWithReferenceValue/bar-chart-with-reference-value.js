@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Bar Chart (with reference value) Web Component
+
+// Developer Notes: Below you'll find two aspects of the component that you can easily control. On Line 58 you control the background colors and on line 62 you can edit the type of chart.
+
 function getCanvas() {
     const canvas = document.createElement('canvas');
     canvas.width = '500';
@@ -50,11 +55,11 @@ class BarChartWithReferenceValueElement extends HTMLElement {
                 labels.push(entry.serievalue);
                 data.push(entry.datavalue);
 
-                backgroundColors.push(entry.datavalue < referenceValue ? 'rgb(54, 162, 235)' : 'rgb(255, 99, 132)');
+                backgroundColors.push(entry.datavalue < referenceValue ? 'rgb(54, 162, 235)' : 'rgb(255, 99, 132)'); //here's where you control background colors
             }
 
             const config = {
-                type: 'bar',
+                type: 'bar', //here's where you control the type of the Bar Chart. Options: bar | horizontalBar
                 data: {
                     labels: labels,
                     responsive: false,

@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Line Chart Web Component
+
+// Developer Notes: Below you'll find three aspects of the component that you can easily control. On Line 50 you control the type of chart and on lines 55 and 56 you control the colors.
+
 function getCanvas() {
     const canvas = document.createElement('canvas');
     canvas.width = '500';
@@ -42,13 +47,13 @@ class LineChartElement extends HTMLElement {
             const data = this.chartData.map(entry => entry.datavalue);
 
             const config = {
-                type: 'line',
+                type: 'line', //here's where you control the type of line chart
                 data: {
                     labels: labels,
                     datasets: [{
                         label: '',
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(255, 99, 132)', //here's where you control the background color
+                        borderColor: 'rgb(255, 99, 132)', //here's where you control the border color
                         data: data,
                         fill: false,
                     }]

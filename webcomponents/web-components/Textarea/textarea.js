@@ -1,3 +1,6 @@
+// OMNIA Low-Code Development Platform
+// Text Area Web Component
+
 class TextareaElement extends HTMLElement {
 
     constructor() {

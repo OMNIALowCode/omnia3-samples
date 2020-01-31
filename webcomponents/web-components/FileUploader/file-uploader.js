@@ -1,3 +1,6 @@
+// OMNIA Low-Code Development Platform
+// File Uploader Web Component
+
 const TRANSLATIONS = {
     default: {
         Button_Label: 'Files',
