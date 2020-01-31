@@ -1,3 +1,6 @@
+// OMNIA Low-Code Development Platform
+// Masked Input Web Component
+
 function setUpMaskToInput(el) {
     const pattern = el.getAttribute('placeholder'),
         slots = new Set('_'),

@@ -1,3 +1,8 @@
+// OMNIA Low-Code Development Platform
+// Santa Web Component
+
+// Developer Notes: Happy Holidays :]
+
 const css = `::selection {
 	background: rgba(255,255,0,0.5);
   }
