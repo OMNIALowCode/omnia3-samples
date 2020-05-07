@@ -199,7 +199,9 @@ class Thumbnail extends HTMLElement {
     // setters
     set value(newValue) {
       if (newValue === "" || newValue === this._settings.lastpath) return;
-      this._settings.lastpath = newValue;
+        {
+          this._settings.lastpath = newValue;
+        }
      
       this.downloadFile(newValue);
     }
