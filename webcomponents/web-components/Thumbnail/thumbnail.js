@@ -11,6 +11,10 @@ const css = `
       overflow: hidden;
     }
 
+    .box.isInvalid{
+      border: 1px solid #E74C3C;
+      box-shadow: 1px 1px 1px 1px #E74C3C;
+    }
  
 
     .avatar-container {
@@ -106,8 +110,9 @@ const css = `
     }
 `
  // Create Elements
- function  getAvatarContainer(OnClick){
+ function  getAvatarContainer(code){
   const avatarContainer = document.createElement("div");
+  avatarContainer.id = `Thumbnail_${code}`;
   avatarContainer.className = "avatar-container"
   return avatarContainer;
 }
@@ -115,6 +120,7 @@ const css = `
 function getEditContainer(onChange,onClick){
   const editContainer = document.createElement("div");
   editContainer.className = "edit-container"
+ 
   const addLabel = document.createElement('label')
   addLabel.className = "btn-primary"
   const uploadImageInput = getUploadImageInput(onChange)
@@ -122,10 +128,10 @@ function getEditContainer(onChange,onClick){
   const removeLabel = document.createElement('label')
   removeLabel.className = "remove btn-danger ";
   const removeImageButton  = getFileRemoveButton(onClick)
+  
   removeLabel.appendChild(removeImageButton);
   editContainer.appendChild(addLabel);
   editContainer.appendChild(removeLabel);
-
   return editContainer;
 }
 
@@ -148,16 +154,21 @@ function getFileRemoveButton(onClick) {
   return button;
 }
 
-// function showErrorMessage(modal, message) {
-//   const label = modal.querySelector('.omnia-file-error-label');
-//   label.textContent = message;
-//   label.classList.remove('d-none');
-// }
+ function showErrorMessage(message) {
+   const box = document.querySelector('#Thubnailbox'); 
+   box.classList.add("isInvalid");
+   const label = document.querySelector('#ThubnailError');
+   label.innerText  = message;
+   label.style =  "display:block";
+}
 
-// function hideErrorMessage(modal) {
-//   const label = modal.querySelector('.omnia-file-error-label');
-//   label.classList.add('d-none');
-// }
+ function hideErrorMessage() {
+   const label = document.querySelector('#ThubnailError');
+   label.style.dispay = "display:none";
+   label.innerHTML = "";
+   const box = document.querySelector('#Thubnailbox'); 
+   box.classList.remove("isInvalid");
+ }
 
 class Thumbnail extends HTMLElement {
     constructor() {
@@ -182,26 +193,26 @@ class Thumbnail extends HTMLElement {
       
      
       this._container = document.createElement("div");
+      this._container.id = "Thubnailbox";
       this._container.className = "box";
       const styleElement = document.createElement("style");
       styleElement.innerHTML = css;
       this._container.appendChild(styleElement);
-      this._container.appendChild(getAvatarContainer());
-     
-      
+      this._feedBackElement = document.createElement("div");
+      this._feedBackElement.className = "element-input-feedback invalid-feedback";
+      this._feedBackElement.id = "ThubnailError";
     }
   
   
     connectedCallback() {
       this.appendChild(this._container);
+      this.appendChild(this._feedBackElement);
     }
 
     // setters
     set value(newValue) {
       if (newValue === "" || newValue === this._settings.lastpath) return;
-        {
-          this._settings.lastpath = newValue;
-        }
+      this._settings.lastpath = newValue;
      
       this.downloadFile(newValue);
     }
@@ -219,17 +230,31 @@ class Thumbnail extends HTMLElement {
   
     set state(newValue) {
       this._settings.state = newValue;
-      if (this._settings.state != null && this._settings.lastCodeValue !== this._settings.state._code) {
+      if (this._settings.state != null &&   this._settings.lastCodeValue !== this._settings.state._code ) {
         this._settings.lastCodeValue = this._settings.state._code;
+        if (this._settings.disabled)
+        {
+        var avatarContainer = getAvatarContainer(this._settings.lastCodeValue);
+            this._container.appendChild(avatarContainer);
+        }
+        else{
+        var avatar_container = document.querySelector("div[id^='Thumbnail_']") == null;
+          if(avatar_container)
+          {
+              var avatarContainer = getAvatarContainer(this._settings.lastCodeValue);
+              this._container.appendChild(avatarContainer);
+              this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
+                
+          }
+          else{
+            document.querySelector("div[id^='Thumbnail_']").id = `Thumbnail_${this._settings.lastCodeValue}`;
+          }
+        }
       }
     }
 
     set isReadOnly(newValue){
       this._settings.disabled = newValue === true;
-      if(!this._settings.disabled)
-      {
-        this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
-      }
     }
 
     
@@ -272,10 +297,10 @@ class Thumbnail extends HTMLElement {
                   .join('. ');
   
               if ((errorMessage || '') !== '') {
-                  //showErrorMessage(this._modal, errorMessage);
+                  showErrorMessage(errorMessage);
                   return [];
               } else {
-                  //hideErrorMessage(this._modal);
+                  hideErrorMessage();
                   return responses;
               }
           })
@@ -369,15 +394,17 @@ class Thumbnail extends HTMLElement {
           const reader = new FileReader();
           reader.readAsDataURL(blob);
         
-          let avatar_container = document.querySelector('.avatar-container');
+          let avatar_container = document.querySelector(`#Thumbnail_${this._settings.lastCodeValue}.avatar-container`);
           reader.onload = function(e) {
             avatar_container.style.backgroundImage = `url('${reader.result}')`;
           };
+        
           avatar_container.className ="avatar-container no-after";
           const addLabel = document.querySelector('label.btn-primary');
-          addLabel.className = "btn-primary add";
+          if(addLabel) addLabel.className = "btn-primary add";
           const removeLabel = document.querySelector('label.remove');
-          removeLabel.className = "btn-danger remove on";
+          if(removeLabel) removeLabel.className = "btn-danger remove on";
+         
         }
       
         endpoint(code) {
