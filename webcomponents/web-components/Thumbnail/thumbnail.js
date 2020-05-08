@@ -186,7 +186,7 @@ class Thumbnail extends HTMLElement {
         files: [],
         entity: null,
         lastCodeValue: null,
-        filesToUpload: [],
+        fileToUpload: null,
         lastpath: null,
         disabled: true,
       };
@@ -213,8 +213,8 @@ class Thumbnail extends HTMLElement {
     set value(newValue) {
       if (newValue === "" || newValue === this._settings.lastpath) return;
       this._settings.lastpath = newValue;
-     
-      this.downloadFile(newValue);
+    
+        this.downloadFile(newValue);
     }
 
     set rootMetadata(newValue) {
@@ -257,11 +257,9 @@ class Thumbnail extends HTMLElement {
       this._settings.disabled = newValue === true;
     }
 
-    
-    
     //events
     onUpload(e) {
-      this._settings.filesToUpload = e.target.files;
+      this._settings.filesToUpload = e.target.files[0];
       this.save();  
     }
 
@@ -270,7 +268,8 @@ class Thumbnail extends HTMLElement {
     }
 
     onAddFile(e) {
-      this._settings.filesToUpload = e.target.files;
+      this._settings.filesToUpload = e.target.files[0];
+
       this.save();
     }
     
@@ -279,43 +278,7 @@ class Thumbnail extends HTMLElement {
       const code = this._settings.lastCodeValue;
       if (code == null || code.trim() === '')
           return;
-  
-      const requests = [];
-      for (const file of this._settings.filesToUpload)
-          requests.push(this.uploadFile(file));
-  
-      if (requests.length === 0)
-          return;
-  
-      
-  
-      Promise.all(requests)
-          .then((responses) => {
-              const errorMessage = responses
-                  .filter(entry => entry.status >= 400)
-                  .map(entry => entry.message)
-                  .join('. ');
-  
-              if ((errorMessage || '') !== '') {
-                  showErrorMessage(errorMessage);
-                  return [];
-              } else {
-                  hideErrorMessage();
-                  return responses;
-              }
-          })
-          .then((responses) => {
-              if (responses.length > 0) {
-                let newValue = ""; 
-                  for (const file of this._settings.filesToUpload) {
-                      newValue = `${this._settings.entity}/${this._settings.lastCodeValue}/${file.name}`;
-                  }
-  
-                  this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: newValue } }));
-              }
-  
-              
-          });
+      this.uploadFile(this._settings.filesToUpload);
     }
 
     //functions
@@ -327,15 +290,10 @@ class Thumbnail extends HTMLElement {
       const url = `${this.endpoint(originalCode)}/${fileName}`;
       const extension = file.split(".")[1];
   
-      fetch(url, {
-        method: "GET",
-  
-        headers: new Headers({
-          Authorization: "Bearer " + this._settings.context.authentication.token
-        })
-      })
-        .then(response => response.blob())
-        .then(blob => this.handlerResponse(blob, extension));
+      const apiClient = this._settings.context.createApiHttpClient();
+
+      apiClient.doGetFile(url, "image/jpeg")
+        .then(response =>this.handlerResponse(response.data))
     }
 
     deleteFile() {
@@ -345,13 +303,8 @@ class Thumbnail extends HTMLElement {
       const originalCode = fileNameSplit.length > 1 ? fileNameSplit[1] : this._settings.lastCodeValue;
       this._settings.entity = fileNameSplit.length > 1 ? fileNameSplit[0] : this._settings.entity;
       const url = `${this.endpoint(originalCode)}/${fileName}`;
-
-      return fetch(url, {
-              method: 'DELETE',
-              headers: new Headers({
-                  'Authorization': 'Bearer ' + this._settings.context.authentication.token,
-              })
-          })
+      const apiClient = this._settings.context.createApiHttpClient();
+      apiClient.doDelete(url)
           .then(response => {
               this._settings.files = this._settings.files.filter(f => f.name !== file);
               const newValue = this._settings.files.map(f => f.name);
@@ -368,28 +321,22 @@ class Thumbnail extends HTMLElement {
 
   
   uploadFile(file) {
-      const formData = new FormData();
-
-      if(file && file.name){
-        let fileNameSplit = file.name.split('/');
-        let fileName = fileNameSplit.length > 1 ? fileNameSplit.pop() : fileNameSplit[0];
-        formData.set('file', file, fileName);
-      }else{
-        formData.set('file', file);
-      }
-
-            return fetch(this.endpoint(this._settings.lastCodeValue), {
-                    method: 'POST',
-                    headers: new Headers({
-                        'Authorization': 'Bearer ' + this._settings.context.authentication.token,
-                    }),
-                    body: formData
-                })
-                .then(response => ({ status: response.status, message: `${file.name}: ${response.statusText}` }));
+          const apiClient = this._settings.context.createApiHttpClient();
+          const url = this.endpoint(this._settings.lastCodeValue);
+          apiClient.doPostFile(url,file)
+                .then(()=>{
+                  hideErrorMessage();
+                  let newValue = ""; 
+                  newValue = `${this._settings.entity}/${this._settings.lastCodeValue}/${file.name}`;
+                  this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: newValue } }));
+              })
+              .catch((response) => {
+                showErrorMessage( response.errorMessage);
+              })
         }
 
       
-        handlerResponse(blob, extension) {
+        handlerResponse(blob) {
           const container = this._container;
           const reader = new FileReader();
           reader.readAsDataURL(blob);
@@ -398,7 +345,9 @@ class Thumbnail extends HTMLElement {
           reader.onload = function(e) {
             avatar_container.style.backgroundImage = `url('${reader.result}')`;
           };
-        
+          reader.onerror = function(errorMessage){
+            console.error(errorMessage);
+          }
           avatar_container.className ="avatar-container no-after";
           const addLabel = document.querySelector('label.btn-primary');
           if(addLabel) addLabel.className = "btn-primary add";
@@ -408,9 +357,9 @@ class Thumbnail extends HTMLElement {
         }
       
         endpoint(code) {
-          return `${this._settings.baseUrl}${this._settings.context.tenant.code}/${this._settings.context.tenant.environmentCode}/application/${this._settings.entity}/${this._settings.context.operation.dataSource}/${code}/Files`;
+          return `/api/v1/${this._settings.context.tenant.code}/${this._settings.context.tenant.environmentCode}/application/${this._settings.entity}/${this._settings.context.operation.dataSource}/${code}/Files`;
         }
 }
 
-  customElements.define("omnia-thumbnail2", Thumbnail);
+  customElements.define("omnia-thumbnail", Thumbnail);
   
