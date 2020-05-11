@@ -24,7 +24,7 @@ function Delete(){
     	return Promise.resolve()
 }
 
-function UplodaFile(){
+function UplodFile(){
    Promise.resolve ({});
 }
 

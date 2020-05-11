@@ -155,18 +155,18 @@ function getFileRemoveButton(onClick) {
 }
 
  function showErrorMessage(message) {
-   const box = document.querySelector('#Thubnailbox'); 
+   const box = document.querySelector('#Thumbnailbox'); 
    box.classList.add("isInvalid");
-   const label = document.querySelector('#ThubnailError');
+   const label = document.querySelector('#ThumbnailError');
    label.innerText  = message;
    label.style =  "display:block";
 }
 
  function hideErrorMessage() {
-   const label = document.querySelector('#ThubnailError');
+   const label = document.querySelector('#ThumbnailError');
    label.style.dispay = "display:none";
    label.innerHTML = "";
-   const box = document.querySelector('#Thubnailbox'); 
+   const box = document.querySelector('#Thumbnailbox'); 
    box.classList.remove("isInvalid");
  }
 
@@ -187,20 +187,20 @@ class Thumbnail extends HTMLElement {
         entity: null,
         lastCodeValue: null,
         fileToUpload: null,
-        lastpath: null,
+        path: null,
         disabled: true,
       };
       
      
       this._container = document.createElement("div");
-      this._container.id = "Thubnailbox";
+      this._container.id = "Thumbnailbox";
       this._container.className = "box";
       const styleElement = document.createElement("style");
       styleElement.innerHTML = css;
       this._container.appendChild(styleElement);
       this._feedBackElement = document.createElement("div");
       this._feedBackElement.className = "element-input-feedback invalid-feedback";
-      this._feedBackElement.id = "ThubnailError";
+      this._feedBackElement.id = "ThumbnailError";
     }
   
   
@@ -211,8 +211,8 @@ class Thumbnail extends HTMLElement {
 
     // setters
     set value(newValue) {
-      if (newValue === "" || newValue === this._settings.lastpath) return;
-      this._settings.lastpath = newValue;
+      if (newValue === "" || newValue === this._settings.path) return;
+      this._settings.path = newValue;
     
         this.downloadFile(newValue);
     }
@@ -222,10 +222,11 @@ class Thumbnail extends HTMLElement {
     }
   
     set context(newValue) {
-      if (newValue) {
+      if (!newValue) return;
+      
         this._settings.context = newValue;
         this._settings.language = this._settings.context.getLanguageTranslator().language;   
-      }
+      
     }
   
     set state(newValue) {
@@ -297,7 +298,7 @@ class Thumbnail extends HTMLElement {
     }
 
     deleteFile() {
-      const file = this._settings.lastpath;
+      const file = this._settings.path;
       const fileNameSplit = file.split('/');
       const fileName = fileNameSplit.length > 1 ? fileNameSplit[2] : fileNameSplit[0];
       const originalCode = fileNameSplit.length > 1 ? fileNameSplit[1] : this._settings.lastCodeValue;
