@@ -246,7 +246,7 @@ class Thumbnail extends HTMLElement {
 
   //events
   onUpload(e) {
-    this._settings.filesToUpload = e.target.files[0];
+    this._settings.fileToUpload = e.target.files[0];
     this.save();
   }
 
@@ -255,7 +255,7 @@ class Thumbnail extends HTMLElement {
   }
 
   onAddFile(e) {
-    this._settings.filesToUpload = e.target.files[0];
+    this._settings.fileToUpload = e.target.files[0];
 
     this.save();
   }
@@ -264,7 +264,7 @@ class Thumbnail extends HTMLElement {
   save() {
     const code = this._settings.lastCodeValue;
     if (code == null || code.trim() === '') return;
-    this.uploadFile(this._settings.filesToUpload);
+    this.uploadFile(this._settings.fileToUpload);
   }
 
   downloadFile(file) {
