@@ -15,7 +15,6 @@ const css = `
       border: 1px solid #E74C3C;
       box-shadow: 1px 1px 1px 1px #E74C3C;
     }
- 
 
     .avatar-container {
         height: 150px;
@@ -85,29 +84,24 @@ const css = `
     z-index: 0;
   }
 
-    .edit-container label.add{
-        width: 50%;
-    }
-
-
-    .edit-container label.add::after{
-      content: '\\f067';
-      left: calc(25% - 1rem);
-    }
-
-    .edit-container label.remove{
-      display: none;
+  .edit-container label.add{
       width: 50%;
-    }
-
-    .edit-container label.remove.on{
-      display: flex
-    }
-
-    .edit-container label.remove::after{
-      content: '\\f1f8';
-      left: calc(75% - 1rem);
-    }
+  }
+  .edit-container label.add::after{
+    content: '\\f067';
+    left: calc(25% - 1rem);
+  }
+  .edit-container label.remove{
+    display: none;
+    width: 50%;
+  }
+  .edit-container label.remove.on{
+    display: flex
+  }
+  .edit-container label.remove::after{
+    content: '\\f1f8';
+    left: calc(75% - 1rem);
+  }
 `;
 // Create Elements
 function getAvatarContainer(code) {
@@ -152,78 +146,75 @@ function getFileRemoveButton(onClick) {
   return button;
 }
 
- function showErrorMessage(message) {
-   const box = document.querySelector('#Thumbnailbox'); 
-   box.classList.add("isInvalid");
-   const label = document.querySelector('#ThumbnailError');
-   label.innerText  = message;
-   label.style =  "display:block";
+function showErrorMessage(message) {
+  const box = document.querySelector('#ThumbnailBox');
+  box.classList.add('isInvalid');
+  const label = document.querySelector('#ThumbnailError');
+  label.innerText = message;
+  label.style = 'display:block';
 }
 
- function hideErrorMessage() {
-   const label = document.querySelector('#ThumbnailError');
-   label.style.dispay = "display:none";
-   label.innerHTML = "";
-   const box = document.querySelector('#Thumbnailbox'); 
-   box.classList.remove("isInvalid");
- }
+function hideErrorMessage() {
+  const label = document.querySelector('#ThumbnailError');
+  label.style.dispay = 'display:none';
+  label.innerHTML = '';
+  const box = document.querySelector('#ThumbnailBox');
+  box.classList.remove('isInvalid');
+}
 
 class Thumbnail extends HTMLElement {
-    constructor() {
-      super();
-  
-      this.downloadFile = this.downloadFile.bind(this);
-      this.handlerResponse = this.handlerResponse.bind(this);
-     
-  
-      this._settings = {
-        baseUrl: `${window.location.protocol}//${window.location.host}/api/v1/`,
-        context: null,
-        state: null,
-        entity: null,
-        files: [],
-        entity: null,
-        lastCodeValue: null,
-        fileToUpload: null,
-        path: null,
-        disabled: true,
-      };
-      
-     
-      this._container = document.createElement("div");
-      this._container.id = "Thumbnailbox";
-      this._container.className = "box";
-      const styleElement = document.createElement("style");
-      styleElement.innerHTML = css;
-      this._container.appendChild(styleElement);
-      this._feedBackElement = document.createElement("div");
-      this._feedBackElement.className = "element-input-feedback invalid-feedback";
-      this._feedBackElement.id = "ThumbnailError";
-    }
-  
-  
-    connectedCallback() {
-      this.appendChild(this._container);
-      this.appendChild(this._feedBackElement);
-    }
+  constructor() {
+    super();
 
-    // setters
-    set value(newValue) {
-      if (newValue === "" || newValue === this._settings.path) return;
-      this._settings.path = newValue;
-    
-        this.downloadFile(newValue);
-    }
+    this.downloadFile = this.downloadFile.bind(this);
+    this.handlerResponse = this.handlerResponse.bind(this);
 
-    set rootMetadata(newValue) {
-      this._settings.entity = newValue ? newValue.entity : '';
-    }
-  
-    set context(newValue) {
-      if (!newValue) return;
-      
-      this._settings.context = newValue;
-      this._settings.language = this._settings.context.getLanguageTranslator().language;   
+    this._settings = {
+      baseUrl: `${window.location.protocol}//${window.location.host}/api/v1/`,
+      context: null,
+      state: null,
+      entity: null,
+      files: [],
+      entity: null,
+      lastCodeValue: null,
+      fileToUpload: null,
+      path: null,
+      disabled: true,
+    };
+
+    this._container = document.createElement('div');
+    this._container.id = 'ThumbnailBox';
+    this._container.className = 'box';
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = css;
+    this._container.appendChild(styleElement);
+    this._feedBackElement = document.createElement('div');
+    this._feedBackElement.className = 'element-input-feedback invalid-feedback';
+    this._feedBackElement.id = 'ThumbnailError';
+  }
+
+  connectedCallback() {
+    this.appendChild(this._container);
+    this.appendChild(this._feedBackElement);
+  }
+
+  // setters
+  set value(newValue) {
+    if (newValue === '' || newValue === this._settings.path) return;
+    this._settings.path = newValue;
+
+    this.downloadFile(newValue);
+  }
+
+  set rootMetadata(newValue) {
+    this._settings.entity = newValue ? newValue.entity : '';
+  }
+
+  set context(newValue) {
+    if (!newValue) return;
+
+    this._settings.context = newValue;
+    this._settings.language = this._settings.context.getLanguageTranslator().language;
   }
 
   set state(newValue) {
