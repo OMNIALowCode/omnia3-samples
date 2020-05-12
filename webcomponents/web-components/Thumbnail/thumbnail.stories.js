@@ -16,15 +16,15 @@ context.createApiHttpClient = Mocks.Function(httpClient);
 httpClient.doGetFile = Mocks.Function(
   GetFile('https://atlas-content-cdn.pixelsquid.com/stock-images/armchair-arm-chair-6360XZ2-600.jpg'),
 );
-httpClient.doPostFile = Mocks.Function(UplodaFile());
+httpClient.doPostFile = Mocks.Function(UploadFile());
 httpClient.doDelete = Mocks.Function(Delete());
 
 function Delete() {
   return Promise.resolve();
 }
 
-function UplodFile(){
-   Promise.resolve ({});
+function UploadFile() {
+  Promise.resolve({});
 }
 
 function GetFile(url) {
