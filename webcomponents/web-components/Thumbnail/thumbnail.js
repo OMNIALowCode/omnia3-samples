@@ -167,7 +167,8 @@ class Thumbnail extends HTMLElement {
     super();
 
     this.downloadFile = this.downloadFile.bind(this);
-    this.handlerResponse = this.handlerResponse.bind(this);
+    this.deleteFile = this.deleteFile.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
 
     this._settings = {
       baseUrl: `${window.location.protocol}//${window.location.host}/api/v1/`,
@@ -278,7 +279,7 @@ class Thumbnail extends HTMLElement {
     apiClient
       .doGetFile(url, extension)
       .then(response => this.handlerGetFileResponse(response.data))
-      .catch(response => this.showErrorMessage(response.errorMessage));
+      .catch(response => showErrorMessage(response.errorMessage));
   }
 
   deleteFile() {
@@ -292,7 +293,7 @@ class Thumbnail extends HTMLElement {
     apiClient
       .doDelete(url)
       .then(this.handlerDeleteResponse(file))
-      .catch(response => this.showErrorMessage(response.errorMessage));
+      .catch(response => showErrorMessage(response.errorMessage));
   }
 
   uploadFile(file) {
@@ -312,7 +313,7 @@ class Thumbnail extends HTMLElement {
   }
 
   handlerDeleteResponse(file) {
-    this.hideErrorMessage();
+    hideErrorMessage();
     this._settings.files = this._settings.files.filter(f => f.name !== file);
     const newValue = this._settings.files.map(f => f.name);
     const avatar_container = document.querySelector('.avatar-container');
