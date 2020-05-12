@@ -221,22 +221,22 @@ class Thumbnail extends HTMLElement {
     this._settings.state = newValue;
 
     if (this._settings.state == null || this._settings.lastCodeValue === this._settings.state._code) return;
-    
+
     this._settings.lastCodeValue = this._settings.state._code;
-    
+
     var newAvatarContainer = getAvatarContainer(this._settings.lastCodeValue);
 
     if (this._settings.disabled) {
+      this._container.appendChild(newAvatarContainer);
+    } else {
+      var currentAvatarContainer = document.querySelector("div[id^='Thumbnail_']");
+      if (currentAvatarContainer == null) {
         this._container.appendChild(newAvatarContainer);
+        this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
       } else {
-        var currentAvatarContainer = document.querySelector("div[id^='Thumbnail_']");
-          if (currentAvatarContainer ==  null) {
-            this._container.appendChild(newAvatarContainer);
-            this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
-          } else {
-            currentAvatarContainer.id = `Thumbnail_${this._settings.lastCodeValue}`;
-          }
+        currentAvatarContainer.id = `Thumbnail_${this._settings.lastCodeValue}`;
       }
+    }
   }
 
   set isReadOnly(newValue) {
@@ -275,30 +275,33 @@ class Thumbnail extends HTMLElement {
     const extension = file.split('.')[1];
     const apiClient = this._settings.context.createApiHttpClient();
 
-    apiClient.doGetFile(url, extension)
-    .then(response => this.handlerGetFileResponse(response.data))
-    .catch(response => this.showErrorMessage(response.errorMessage));
+    apiClient
+      .doGetFile(url, extension)
+      .then(response => this.handlerGetFileResponse(response.data))
+      .catch(response => this.showErrorMessage(response.errorMessage));
   }
 
   deleteFile() {
-      const file = this._settings.path;
-      const fileNameSplit = file.split('/');
-      const fileName = fileNameSplit.length > 1 ? fileNameSplit[2] : fileNameSplit[0];
-      const originalCode = fileNameSplit.length > 1 ? fileNameSplit[1] : this._settings.lastCodeValue;
-      this._settings.entity = fileNameSplit.length > 1 ? fileNameSplit[0] : this._settings.entity;
-      const url = `${this.endpoint(originalCode)}/${fileName}`;
-      const apiClient = this._settings.context.createApiHttpClient();
-      apiClient.doDelete(url)
+    const file = this._settings.path;
+    const fileNameSplit = file.split('/');
+    const fileName = fileNameSplit.length > 1 ? fileNameSplit[2] : fileNameSplit[0];
+    const originalCode = fileNameSplit.length > 1 ? fileNameSplit[1] : this._settings.lastCodeValue;
+    this._settings.entity = fileNameSplit.length > 1 ? fileNameSplit[0] : this._settings.entity;
+    const url = `${this.endpoint(originalCode)}/${fileName}`;
+    const apiClient = this._settings.context.createApiHttpClient();
+    apiClient
+      .doDelete(url)
       .then(this.handlerDeleteResponse(file))
-      .catch(response =>  this.showErrorMessage(response.errorMessage));
+      .catch(response => this.showErrorMessage(response.errorMessage));
   }
 
   uploadFile(file) {
     const apiClient = this._settings.context.createApiHttpClient();
     const url = this.endpoint(this._settings.lastCodeValue);
-    apiClient.doPostFile(url, file)
-    .then(this.handlerPostFileResponse(file))
-    .catch(response => showErrorMessage(response.errorMessage));
+    apiClient
+      .doPostFile(url, file)
+      .then(this.handlerPostFileResponse(file))
+      .catch(response => showErrorMessage(response.errorMessage));
   }
 
   handlerPostFileResponse(file) {
@@ -312,13 +315,13 @@ class Thumbnail extends HTMLElement {
     this.hideErrorMessage();
     this._settings.files = this._settings.files.filter(f => f.name !== file);
     const newValue = this._settings.files.map(f => f.name);
-    const avatar_container = document.querySelector(".avatar-container");
-    avatar_container.style.backgroundImage = "";
-    avatar_container.className = "avatar-container";
+    const avatar_container = document.querySelector('.avatar-container');
+    avatar_container.style.backgroundImage = '';
+    avatar_container.className = 'avatar-container';
     const addLabel = document.querySelector('label.btn-primary');
-    addLabel.className = "btn-primary";
+    addLabel.className = 'btn-primary';
     const removeLabel = document.querySelector('label.remove');
-    removeLabel.className = "remove btn-danger";
+    removeLabel.className = 'remove btn-danger';
     this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: newValue.join(';') } }));
   }
 
