@@ -2,9 +2,8 @@
 
 ### Customization
 
-| Property   | Description                                                              | Default Value |
-| ---------- | ------------------------------------------------------------------------ | ------------- |
-| isReadOnly | Sets the elements as read-only (not allowing to add or remove images)    | true          |
-| ---------- | ------------------------------------------------------------------------ | ------------- |
-| value      | The current image: a string with TenantName/Entity Identifier/ File name |               |
-|            | (Thumbnail/A1/Chair.jpg)                                                 |               |
+| Property   | Description                                                                                               | Default Value |
+| ---------- | --------------------------------------------------------------------------------------------------------- | ------------- |
+| isReadOnly | Sets the elements as read-only (not allowing to add or remove images)                                     | true          |
+| value      | The current image: a string with TenantName/Entity Identifier/File name (Example: Thumbnail/A1/Chair.jpg) |               |
+|            |
