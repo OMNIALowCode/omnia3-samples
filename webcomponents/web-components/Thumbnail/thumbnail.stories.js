@@ -51,12 +51,13 @@ storiesOf('Data Input|Thumbnail', module).add(
   () => {
     const component = createElement();
 
-    component.context = context;
-    component.value = text('Value', 'File Path');
     component.isReadOnly = boolean('Is read only', true);
-    component.state = Mocks.Object({ _code: 'A1' });
-    component.rootMetadata = Mocks.Object({ entity: 'Thumbnail' });
 
+    component.rootMetadata = Mocks.Object({ entity: 'Thumbnail' });
+    component.context = context;
+
+    component.state = Mocks.Object({ _code: 'A1', RefreshElements: true });
+    component.value = 'Thumbnail/A1/image.png';
     return component;
   },
   { notes: readme },

@@ -111,6 +111,13 @@ function getAvatarContainer(code) {
   return avatarContainer;
 }
 
+function getFeedBackContainer(code) {
+  const feedback = document.createElement('div');
+  feedback.id = `ThumbnailError_${code}`;
+  feedback.className = 'element-input-feedback invalid-feedback';
+  return feedback;
+}
+
 function getEditContainer(onChange, onClick) {
   const editContainer = document.createElement('div');
   editContainer.className = 'edit-container';
@@ -131,6 +138,7 @@ function getEditContainer(onChange, onClick) {
 
 function getUploadImageInput(onChange) {
   const input = document.createElement('input');
+  input.id = 'Thumbnail_input';
   input.type = 'file';
   input.style = 'display:none';
   input.multiple = false;
@@ -146,19 +154,20 @@ function getFileRemoveButton(onClick) {
   return button;
 }
 
-function showErrorMessage(message) {
-  const box = document.querySelector('#ThumbnailBox');
+function showErrorMessage(message, code) {
+  const box = document.querySelector(`#ThumbnailBox_${code}`);
   box.classList.add('isInvalid');
-  const label = document.querySelector('#ThumbnailError');
+  const label = document.querySelector(`#ThumbnailError_${code}`);
   label.innerText = message;
   label.style = 'display:block';
 }
 
-function hideErrorMessage() {
-  const label = document.querySelector('#ThumbnailError');
+function hideErrorMessage(code) {
+  const label = document.querySelector(`#ThumbnailError_${code}`);
+  if (label == null) return;
   label.style.dispay = 'display:none';
   label.innerHTML = '';
-  const box = document.querySelector('#ThumbnailBox');
+  const box = document.querySelector(`#ThumbnailBox_${code}`);
   box.classList.remove('isInvalid');
 }
 
@@ -176,7 +185,6 @@ class Thumbnail extends HTMLElement {
       state: null,
       entity: null,
       files: [],
-      entity: null,
       lastCodeValue: null,
       fileToUpload: null,
       path: null,
@@ -184,14 +192,12 @@ class Thumbnail extends HTMLElement {
     };
 
     this._container = document.createElement('div');
-    this._container.id = 'ThumbnailBox';
+
     this._container.className = 'box';
     const styleElement = document.createElement('style');
     styleElement.innerHTML = css;
     this._container.appendChild(styleElement);
     this._feedBackElement = document.createElement('div');
-    this._feedBackElement.className = 'element-input-feedback invalid-feedback';
-    this._feedBackElement.id = 'ThumbnailError';
   }
 
   connectedCallback() {
@@ -226,16 +232,17 @@ class Thumbnail extends HTMLElement {
     this._settings.lastCodeValue = this._settings.state._code;
 
     var newAvatarContainer = getAvatarContainer(this._settings.lastCodeValue);
+    var newFeedBackContainer = getFeedBackContainer(this._settings.lastCodeValue);
 
     if (this._settings.disabled) {
-      this._container.appendChild(newAvatarContainer);
+      this.AppendReadOnlyElements(newAvatarContainer, newFeedBackContainer);
     } else {
       var currentAvatarContainer = document.querySelector("div[id^='Thumbnail_']");
-      if (currentAvatarContainer == null) {
-        this._container.appendChild(newAvatarContainer);
-        this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
+      var currentfeedBackelement = document.querySelector("div[id^='ThumbnailError_']");
+      if (currentAvatarContainer == null || this._settings.state.RefreshElements) {
+        this.AppendEditElements(newAvatarContainer, newFeedBackContainer);
       } else {
-        currentAvatarContainer.id = `Thumbnail_${this._settings.lastCodeValue}`;
+        this.ResetElementIdentifiers(currentAvatarContainer, currentfeedBackelement);
       }
     }
   }
@@ -256,11 +263,30 @@ class Thumbnail extends HTMLElement {
 
   onAddFile(e) {
     this._settings.fileToUpload = e.target.files[0];
-
     this.save();
   }
 
   //Functions
+  AppendReadOnlyElements(newAvatarContainer, newFeedBackContainer) {
+    this._container.id = `ThumbnailBox_${this._settings.lastCodeValue}`;
+    this._container.appendChild(newAvatarContainer);
+    this._feedBackElement.appendChild(newFeedBackContainer);
+  }
+
+  AppendEditElements(newAvatarContainer, newFeedBackContainer) {
+    this._container.id = `ThumbnailBox_${this._settings.lastCodeValue}`;
+    this._container.appendChild(newAvatarContainer);
+    this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
+    this._feedBackElement.appendChild(newFeedBackContainer);
+  }
+
+  ResetElementIdentifiers(currentAvatarContainer, currentfeedBackelement) {
+    if (this._settings.path) this.deleteFile();
+    currentAvatarContainer.id = `Thumbnail_${this._settings.lastCodeValue}`;
+    currentfeedBackelement.id = `ThumbnailError_${this._settings.lastCodeValue}`;
+    this._container.id = `ThumbnailBox_${this._settings.lastCodeValue}`;
+  }
+
   save() {
     const code = this._settings.lastCodeValue;
     if (code == null || code.trim() === '') return;
@@ -276,14 +302,15 @@ class Thumbnail extends HTMLElement {
     const extension = file.split('.')[1];
     const apiClient = this._settings.context.createApiHttpClient();
 
-    apiClient
-      .doGetFile(url, extension)
-      .then(response => this.handlerGetFileResponse(response.data))
-      .catch(response => showErrorMessage(response.errorMessage));
+    apiClient.doGetFile(url, extension).then(
+      response => this.handlerGetFileResponse(response.data),
+      response => showErrorMessage(response.message, this._settings.lastCodeValue),
+    );
   }
 
   deleteFile() {
     const file = this._settings.path;
+    if (file == null) return;
     const fileNameSplit = file.split('/');
     const fileName = fileNameSplit.length > 1 ? fileNameSplit[2] : fileNameSplit[0];
     const originalCode = fileNameSplit.length > 1 ? fileNameSplit[1] : this._settings.lastCodeValue;
@@ -292,41 +319,43 @@ class Thumbnail extends HTMLElement {
     const apiClient = this._settings.context.createApiHttpClient();
     apiClient
       .doDelete(url)
-      .then(this.handlerDeleteResponse(file))
-      .catch(response => showErrorMessage(response.errorMessage));
+      .then(this.handlerDeleteResponse(file), response =>
+        showErrorMessage(response.message, this._settings.lastCodeValue),
+      );
   }
 
   uploadFile(file) {
     const apiClient = this._settings.context.createApiHttpClient();
     const url = this.endpoint(this._settings.lastCodeValue);
-    apiClient
-      .doPostFile(url, file)
-      .then(this.handlerPostFileResponse(file))
-      .catch(response => showErrorMessage(response.errorMessage));
+    apiClient.doPostFile(url, file).then(
+      response => this.handlerPostFileResponse(file, response),
+      response => showErrorMessage(response.message, this._settings.lastCodeValue),
+    );
   }
 
-  handlerPostFileResponse(file) {
-    hideErrorMessage();
+  handlerPostFileResponse(file, response) {
+    hideErrorMessage(this._settings.lastCodeValue);
     let newValue = '';
     newValue = `${this._settings.entity}/${this._settings.lastCodeValue}/${file.name}`;
     this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: newValue } }));
   }
 
   handlerDeleteResponse(file) {
-    hideErrorMessage();
+    hideErrorMessage(this._settings.lastCodeValue);
     this._settings.files = this._settings.files.filter(f => f.name !== file);
     const newValue = this._settings.files.map(f => f.name);
     const avatar_container = document.querySelector('.avatar-container');
     avatar_container.style.backgroundImage = '';
     avatar_container.className = 'avatar-container';
     const addLabel = document.querySelector('label.btn-primary');
-    addLabel.className = 'btn-primary';
+    if (addLabel != null) addLabel.className = 'btn-primary';
     const removeLabel = document.querySelector('label.remove');
-    removeLabel.className = 'remove btn-danger';
+    if (removeLabel != null) removeLabel.className = 'remove btn-danger';
     this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: newValue.join(';') } }));
   }
 
   handlerGetFileResponse(blob) {
+    hideErrorMessage(this._settings.lastCodeValue);
     const container = this._container;
     const reader = new FileReader();
     reader.readAsDataURL(blob);
@@ -336,7 +365,7 @@ class Thumbnail extends HTMLElement {
       avatar_container.style.backgroundImage = `url('${reader.result}')`;
     };
 
-    avatar_container.className = 'avatar-container no-after';
+    if (avatar_container) avatar_container.className = 'avatar-container no-after';
     const addLabel = document.querySelector('label.btn-primary');
     if (addLabel) addLabel.className = 'btn-primary add';
     const removeLabel = document.querySelector('label.remove');
