@@ -1,0 +1,18 @@
+{
+  "extends": "react-app",
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {
+        "no-template-curly-in-string": "off",
+        "jsx-a11y/anchor-is-valid": "off"
+      }
+    },
+    {
+      "files": ["src/shared/supportedBrowsers.js"],
+      "rules": {
+        "no-useless-escape": "off"
+      }
+    }
+  ]
+}
