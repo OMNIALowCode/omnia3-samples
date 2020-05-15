@@ -180,7 +180,6 @@ class Thumbnail extends HTMLElement {
     this.uploadFile = this.uploadFile.bind(this);
 
     this._settings = {
-      baseUrl: `${window.location.protocol}//${window.location.host}/api/v1/`,
       context: null,
       state: null,
       entity: null,
@@ -197,12 +196,12 @@ class Thumbnail extends HTMLElement {
     const styleElement = document.createElement('style');
     styleElement.innerHTML = css;
     this._container.appendChild(styleElement);
-    this._feedBackElement = document.createElement('div');
+    this._feedbackElement = document.createElement('div');
   }
 
   connectedCallback() {
     this.appendChild(this._container);
-    this.appendChild(this._feedBackElement);
+    this.appendChild(this._feedbackElement);
   }
 
   // setters
@@ -235,14 +234,14 @@ class Thumbnail extends HTMLElement {
     var newFeedBackContainer = getFeedBackContainer(this._settings.lastCodeValue);
 
     if (this._settings.disabled) {
-      this.AppendReadOnlyElements(newAvatarContainer, newFeedBackContainer);
+      this.appendReadonlyElements(newAvatarContainer, newFeedBackContainer);
     } else {
       var currentAvatarContainer = document.querySelector("div[id^='Thumbnail_']");
-      var currentfeedBackelement = document.querySelector("div[id^='ThumbnailError_']");
+      var currentFeedbackElement = document.querySelector("div[id^='ThumbnailError_']");
       if (currentAvatarContainer == null || this._settings.state.RefreshElements) {
-        this.AppendEditElements(newAvatarContainer, newFeedBackContainer);
+        this.appendEditElements(newAvatarContainer, newFeedBackContainer);
       } else {
-        this.ResetElementIdentifiers(currentAvatarContainer, currentfeedBackelement);
+        this.resetElementIdentifiers(currentAvatarContainer, currentFeedbackElement);
       }
     }
   }
@@ -267,23 +266,23 @@ class Thumbnail extends HTMLElement {
   }
 
   //Functions
-  AppendReadOnlyElements(newAvatarContainer, newFeedBackContainer) {
+  appendReadonlyElements(newAvatarContainer, newFeedBackContainer) {
     this._container.id = `ThumbnailBox_${this._settings.lastCodeValue}`;
     this._container.appendChild(newAvatarContainer);
-    this._feedBackElement.appendChild(newFeedBackContainer);
+    this._feedbackElement.appendChild(newFeedBackContainer);
   }
 
-  AppendEditElements(newAvatarContainer, newFeedBackContainer) {
+  appendEditElements(newAvatarContainer, newFeedBackContainer) {
     this._container.id = `ThumbnailBox_${this._settings.lastCodeValue}`;
     this._container.appendChild(newAvatarContainer);
     this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
-    this._feedBackElement.appendChild(newFeedBackContainer);
+    this._feedbackElement.appendChild(newFeedBackContainer);
   }
 
-  ResetElementIdentifiers(currentAvatarContainer, currentfeedBackelement) {
+  resetElementIdentifiers(currentAvatarContainer, currentFeedbackElement) {
     if (this._settings.path) this.deleteFile();
     currentAvatarContainer.id = `Thumbnail_${this._settings.lastCodeValue}`;
-    currentfeedBackelement.id = `ThumbnailError_${this._settings.lastCodeValue}`;
+    currentFeedbackElement.id = `ThumbnailError_${this._settings.lastCodeValue}`;
     this._container.id = `ThumbnailBox_${this._settings.lastCodeValue}`;
   }
 

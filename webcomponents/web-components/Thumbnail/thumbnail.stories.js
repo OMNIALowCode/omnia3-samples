@@ -1,6 +1,6 @@
-import { document, console } from 'global';
+import { document } from 'global';
 import { storiesOf } from '@storybook/html';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import { ContextMock } from '../_mocks/context';
 import { HttpClientMock } from '../_mocks/http-client';
 import Mocks from '../_mocks/mocks.extensions';
