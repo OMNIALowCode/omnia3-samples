@@ -1,18 +1,26 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
 
 // import component
 import './santa';
-import readme from './readme.md';
+import mdx from './santa.mdx';
 
-storiesOf('Merry Christmas', module).add(
-  'default',
-  () => {
-    const component = createElement();
-    return component;
+export default {
+  title: 'Other/Merry Christmas',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
   },
-  { notes: readme }
-);
+};
+
+export const Default = () => {
+  const component = createElement();
+  return component;
+};
+
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
   const element = document.createElement('omnia-santa');

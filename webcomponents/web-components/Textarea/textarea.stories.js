@@ -1,23 +1,32 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
 import { boolean, text } from '@storybook/addon-knobs';
 // import component
 import './textarea';
-import readme from './readme.md';
+import mdx from './textarea.mdx';
 
-storiesOf('Data Input|Textarea', module)
-    .add('default', () => {
-        const component = createElement();
+export default {
+  title: 'Data Input/Textarea',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+};
 
-        component.value = text('Value', 'My textarea value');
-        component.isReadOnly = boolean('Is read only', false);
+export const Default = () => {
+  const component = createElement();
 
-        return component;
+  component.value = text('Value', 'My textarea value');
+  component.isReadOnly = boolean('Is read only', false);
 
-    }, { notes: readme });
+  return component;
+};
 
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
-    const element = document.createElement('omnia-textarea');
-    return element;
+  const element = document.createElement('omnia-textarea');
+  return element;
 }

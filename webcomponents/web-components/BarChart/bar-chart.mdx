@@ -1,20 +1,22 @@
-[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/web-components/BarChartWithReferenceValue/bar-chart-with-reference-value.js)
+import { Story, Preview } from '@storybook/addon-docs/blocks';
+
+[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/web-components/BarChart/bar-chart.js)
 
 
 ### Customization
 | Property | Description                     | Default Value |
 |----------|---------------------------------|---------------|
 | value | The values to display in the chart: a collection of objects, containing a _serievalue_ and a _datavalue_. | [] |
-| referenceValue | The reference value of the chart's data | 0 |
 
 **Example**
 
+```json
 [
-
         { serievalue: 'Serie 1', datavalue: 3},
-
         { serievalue: 'Serie 2', datavalue: 4},
-
         ...
-
 ]
+```
+
+
+<Story id="visualization-bar-chart--default" />

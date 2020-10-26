@@ -5,12 +5,12 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 addDecorator(withKnobs);
 addParameters({
-    options: {
-        storySort: (a, b) => a[1].id.localeCompare(b[1].id)
-    },
-    viewport: {
-        viewports: INITIAL_VIEWPORTS,
-    },
+  options: {
+    storySort: (a, b) => a[1].id.localeCompare(b[1].id),
+  },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
 });
 
 configure(require.context('../web-components', true, /\.stories\.(js|mdx)$/), module);
