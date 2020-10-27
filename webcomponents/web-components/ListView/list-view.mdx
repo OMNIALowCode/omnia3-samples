@@ -1,0 +1,55 @@
+import { Story, Preview } from '@storybook/addon-docs/blocks';
+
+[View source code](https://github.com/OMNIALowCode/omnia3-samples/blob/master/webcomponents/web-components/ListView/list-view.js)
+
+
+### Customization
+
+| Property      | Description                                                                                                                                             | Default Value    |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| loadMoreLabel | Label to load more action link.                                                                                                                         | Load more        |
+| emptyLabel    | Label to display when there's no data in the value attribute.                                                                                           | No records found |
+| onLoadMore    | Function to load more data. Load more option will be available if a function has been provided. If there's no data to load, set the onLoadMore to null. |                  |
+| value         | The values to display in the list view: a collection of objects (example bellow).                                                                       | []               |
+
+**Example:**
+
+```JSON
+[
+    {
+        title: '🍕 Anual team meeting',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae congue mauris rhoncus.',
+        badge: { text: 'Today', color: 'warning' },
+        thumbnail: { address: 'https://avatars0.githubusercontent.com/u/20701566', title: 'OMNIA' }
+    },
+    {
+        title: '🛠 Project kick-off',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        badge: { text: '3 days' }
+    }
+]
+```
+
+
+### Working with paginated datasets
+
+In case you need to work with paginated datasets, you will need to provide a function to `onLoadMore` attribute. This function will be invoked when the users click in the Load More button.
+
+The function provided to the `onLoadMore` is responsible to compose the new dataset and set it in the `value` attribute. To deliver an experience of continuous loading, you need to provide a new array to the `value` combining the data already in the `value` with the new data entries.
+
+If there are no more data to load, the `onLoadMore` attribute must be set to null.
+
+**Example:**
+
+```JavaScript
+
+component.onLoadMore = () => onLoadMore(component);
+
+function onLoadMore(component) {
+    component.onLoadMore = null;
+    component.value = [...component.value, ...secondPage];
+}
+```
+
+
+<Story id="visualization-list-view--default" />

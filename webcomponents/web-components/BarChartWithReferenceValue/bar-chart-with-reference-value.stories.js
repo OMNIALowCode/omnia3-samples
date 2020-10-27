@@ -1,31 +1,41 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
 import { object, number } from '@storybook/addon-knobs';
 // import component
 import './bar-chart-with-reference-value';
-import readme from './readme.md';
+import mdx from './bar-chart-with-reference-value.mdx';
 
-storiesOf('Visualization|Bar Chart with reference value', module)
-    .add('default', () => {
-        const chart = createElement();
+export default {
+  title: 'Visualization/Bar Chart with reference value',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+};
 
-        chart.referenceValue = number('Reference value', 25);
-        chart.value = object('Value', initialValue);
+export const Default = () => {
+  const chart = createElement();
 
-        return chart;
-    }, { notes: readme });
+  chart.referenceValue = number('Reference value', 25);
+  chart.value = object('Value', initialValue);
 
+  return chart;
+};
+
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
-    const element = document.createElement('omnia-bar-chart-with-reference-value');
+  const element = document.createElement('omnia-bar-chart-with-reference-value');
 
-    return element;
+  return element;
 }
 
 const initialValue = [
-    { serievalue: 'Jan', datavalue: 35 },
-    { serievalue: 'Feb', datavalue: 41 },
-    { serievalue: 'Mar', datavalue: 12 },
-    { serievalue: 'Apr', datavalue: 75 },
-    { serievalue: 'May', datavalue: 64 }
+  { serievalue: 'Jan', datavalue: 35 },
+  { serievalue: 'Feb', datavalue: 41 },
+  { serievalue: 'Mar', datavalue: 12 },
+  { serievalue: 'Apr', datavalue: 75 },
+  { serievalue: 'May', datavalue: 64 },
 ];

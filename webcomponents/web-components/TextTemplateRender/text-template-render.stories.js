@@ -1,18 +1,19 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
 import { text, object } from '@storybook/addon-knobs';
 import { ContextMock } from '../_mocks/context';
 import { HttpClientMock } from '../_mocks/http-client';
 import Mocks from '../_mocks/mocks.extensions';
 // import component
 import './text-template-render';
-import readme from './readme.md';
+import mdx from './text-template-render.mdx';
 // context
 const context = ContextMock();
 const httpClient = HttpClientMock();
 httpClient.doPost = Mocks.Function(
-    Promise.resolve({
-        data: new Blob([`
+  Promise.resolve({
+    data: new Blob(
+      [
+        `
         <div>
             <div class="jumbotron">
                 <h1 class="display-4">Hello, world!</h1>
@@ -25,30 +26,43 @@ httpClient.doPost = Mocks.Function(
                 <a class="btn btn-primary btn-lg" href="#" role="button">Proin vel</a>
             </div>
         </div>
-    `], { type: 'text/html' })
-    })
+    `,
+      ],
+      { type: 'text/html' },
+    ),
+  }),
 );
 context.createApiHttpClient = Mocks.Function(httpClient);
 
-storiesOf('Visualization|Text Template render', module)
-    .add('default', () => {
-        const component = createElement();
+export default {
+  title: 'Visualization/Text Template render',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+};
 
-        component.context = context;
-        component.identifier = text('Identifier', 'MyTextTemplate');
-        component.parameters = object('Parameters', initialValue);
+export const Default = () => {
+  const component = createElement();
 
-        return component;
+  component.context = context;
+  component.identifier = text('Identifier', 'MyTextTemplate');
+  component.parameters = object('Parameters', initialValue);
 
-    }, { notes: readme });
+  return component;
+};
 
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
-    const element = document.createElement('omnia-text-template-render');
-    return element;
+  const element = document.createElement('omnia-text-template-render');
+  return element;
 }
 
 const initialValue = {
-    parameter1: '',
-    parameter2: ''
-}
+  parameter1: '',
+  parameter2: '',
+};
