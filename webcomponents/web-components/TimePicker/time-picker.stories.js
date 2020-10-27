@@ -1,23 +1,33 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
 import { boolean, text } from '@storybook/addon-knobs';
 // import component
 import './time-picker';
-import readme from './readme.md';
+import mdx from './time-picker.mdx';
 
-storiesOf('Data Input|Time Picker', module)
-    .add('default', () => {
-        const textarea = createElement();
+export default {
+  title: 'Data Input/Time Picker',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+};
 
-        textarea.value = text('Value', '02:59');
-        textarea.isReadOnly = boolean('Is read only', false);
+export const Default = () => {
+  const textarea = createElement();
 
-        return textarea;
-    }, { notes: readme });
+  textarea.value = text('Value', '02:59');
+  textarea.isReadOnly = boolean('Is read only', false);
 
+  return textarea;
+};
+
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
-    const element = document.createElement('omnia-time-picker');
+  const element = document.createElement('omnia-time-picker');
 
-    return element;
+  return element;
 }

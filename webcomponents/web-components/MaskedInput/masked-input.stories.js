@@ -1,23 +1,33 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
 import { boolean, text } from '@storybook/addon-knobs';
 // import component
 import './masked-input';
-import readme from './readme.md';
+import mdx from './masked-input.mdx';
 
-storiesOf('Data Input|Masked Input', module)
-    .add('default', () => {
-        const textarea = createElement();
+export default {
+  title: 'Data Input/Masked Input',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+};
 
-        textarea.isReadOnly = boolean('Is read only', false);
-        textarea.mask = text('Mask', '____-___');
+export const Default = () => {
+  const textarea = createElement();
 
-        return textarea;
-    }, { notes: readme });
+  textarea.isReadOnly = boolean('Is read only', false);
+  textarea.mask = text('Mask', '____-___');
 
+  return textarea;
+};
+
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
-    const element = document.createElement('omnia-masked-input');
+  const element = document.createElement('omnia-masked-input');
 
-    return element;
+  return element;
 }

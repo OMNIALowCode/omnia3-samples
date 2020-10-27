@@ -1,33 +1,42 @@
 import { document, console } from 'global';
-import { storiesOf } from '@storybook/html';
 import { object, boolean, text } from '@storybook/addon-knobs';
 
 // import component
 import './selectbox';
-import readme from './readme.md';
+import mdx from './selectbox.mdx';
 
-storiesOf('Data Input|Select box', module)
-    .add('default', () => {
-        const component = createElement();
+export default {
+  title: 'Data Input/Select box',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+};
 
-        component.isReadOnly = boolean('Is read only', false);
-        component.options = object('Options', initialValue);
-        component.value = text('Value', initialValue[2].value);
+export const Default = () => {
+  const component = createElement();
 
-        return component;
+  component.isReadOnly = boolean('Is read only', false);
+  component.options = object('Options', initialValue);
+  component.value = text('Value', initialValue[2].value);
 
-    }, { notes: readme });
+  return component;
+};
 
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
-    const element = document.createElement('omnia-select');
-    return element;
+  const element = document.createElement('omnia-select');
+  return element;
 }
 
 const initialValue = [
-    { value: 'Approved', text: 'Approved' },
-    { value: 'Almost', text: 'Almost' },
-    { value: 'Nearly', text: 'Nearly' },
-    { value: 'There', text: 'There' },
-    { value: 'Past', text: 'Past' }
+  { value: 'Approved', text: 'Approved' },
+  { value: 'Almost', text: 'Almost' },
+  { value: 'Nearly', text: 'Nearly' },
+  { value: 'There', text: 'There' },
+  { value: 'Past', text: 'Past' },
 ];

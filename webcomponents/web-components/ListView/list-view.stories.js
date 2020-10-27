@@ -1,57 +1,72 @@
-import { document } from "global";
-import { storiesOf } from "@storybook/html";
-import { object, text } from "@storybook/addon-knobs";
+import { document } from 'global';
+import { object, text } from '@storybook/addon-knobs';
 // import component
-import "./list-view";
-import readme from "./readme.md";
+import './list-view';
+import mdx from './list-view.mdx';
 
-storiesOf("Visualization|List View", module).add(
-    "default",
-    () => {
-        const component = createElement();
+export default {
+  title: 'Visualization/List View',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
+};
 
-        component.onLoadMore = () => onLoadMore(component);
-        component.value = object("Value", initialValue);
-        component.loadMoreLabel = text("Load more label");
-        component.emptyLabel = text("Empty list label");
+export const Default = () => {
+  const component = createElement();
 
-        return component;
-    }, { notes: readme }
-);
+  component.onLoadMore = () => onLoadMore(component);
+  component.value = object('Value', initialValue);
+  component.loadMoreLabel = text('Load more label');
+  component.emptyLabel = text('Empty list label');
+
+  return component;
+};
+
+Default.story = {
+  name: 'default',
+};
 
 function onLoadMore(component) {
-    setTimeout(() => {
-        component.onLoadMore = null;
-        component.value = [...component.value, ...secondPage];
-    }, 1000);
+  setTimeout(() => {
+    component.onLoadMore = null;
+    component.value = [...component.value, ...secondPage];
+  }, 1000);
 }
 
 function createElement() {
-    const element = document.createElement("omnia-list-view");
-    return element;
+  const element = document.createElement('omnia-list-view');
+  return element;
 }
 
-const initialValue = [{
-        title: "🍕 Anual team meeting",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae congue mauris rhoncus.",
-        badge: { text: "Today", color: "warning" },
-        thumbnail: {
-            address: "https://avatars0.githubusercontent.com/u/20701566",
-            title: "OMNIA"
-        }
+const initialValue = [
+  {
+    title: '🍕 Anual team meeting',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A arcu cursus vitae congue mauris rhoncus.',
+    badge: { text: 'Today', color: 'warning' },
+    thumbnail: {
+      address: 'https://avatars0.githubusercontent.com/u/20701566',
+      title: 'OMNIA',
     },
-    {
-        title: "🛠 Project kick-off",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        badge: { text: "3 days" }
-    }
+  },
+  {
+    title: '🛠 Project kick-off',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    badge: { text: '3 days' },
+  },
 ];
 
-const secondPage = [{
-    title: "📆 Sprint Planning",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+const secondPage = [
+  {
+    title: '📆 Sprint Planning',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     link: {
-        address: "https://www.scrum.org/resources/what-is-sprint-planning",
-        target: "_blank"
-    }
-}];
+      address: 'https://www.scrum.org/resources/what-is-sprint-planning',
+      target: '_blank',
+    },
+  },
+];

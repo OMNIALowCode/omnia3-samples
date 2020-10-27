@@ -1,5 +1,4 @@
 import { document } from 'global';
-import { storiesOf } from '@storybook/html';
 import { boolean } from '@storybook/addon-knobs';
 import { ContextMock } from '../_mocks/context';
 import { HttpClientMock } from '../_mocks/http-client';
@@ -7,7 +6,7 @@ import Mocks from '../_mocks/mocks.extensions';
 
 // import component
 import './thumbnail';
-import readme from './readme.md';
+import mdx from './thumbnail.mdx';
 
 const context = ContextMock();
 const httpClient = HttpClientMock();
@@ -28,16 +27,16 @@ function UploadFile() {
 }
 
 function GetFile(url) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     var canvas = document.createElement('CANVAS');
     var ctx = canvas.getContext('2d');
     var img = new Image();
     img.crossOrigin = 'Anonymous';
-    img.onload = function() {
+    img.onload = function () {
       canvas.height = img.height;
       canvas.width = img.width;
       ctx.drawImage(img, 0, 0);
-      canvas.toBlob(function(blob) {
+      canvas.toBlob(function (blob) {
         resolve({ data: blob });
         canvas = null;
       }, 'image/png');
@@ -46,22 +45,31 @@ function GetFile(url) {
   });
 }
 
-storiesOf('Data Input|Thumbnail', module).add(
-  'default',
-  () => {
-    const component = createElement();
-
-    component.isReadOnly = boolean('Is read only', true);
-
-    component.rootMetadata = Mocks.Object({ entity: 'Thumbnail' });
-    component.context = context;
-
-    component.state = Mocks.Object({ _code: 'A1', RefreshElements: true });
-    component.value = 'Thumbnail/A1/image.png';
-    return component;
+export default {
+  title: 'Data Input/Thumbnail',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
   },
-  { notes: readme },
-);
+};
+
+export const Default = () => {
+  const component = createElement();
+
+  component.isReadOnly = boolean('Is read only', true);
+
+  component.rootMetadata = Mocks.Object({ entity: 'Thumbnail' });
+  component.context = context;
+
+  component.state = Mocks.Object({ _code: 'A1', RefreshElements: true });
+  component.value = 'Thumbnail/A1/image.png';
+  return component;
+};
+
+Default.story = {
+  name: 'default',
+};
 
 function createElement() {
   const element = document.createElement('omnia-thumbnail');
