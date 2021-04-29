@@ -93,3 +93,6 @@ $list-group-action-color:           $body-color;
 $list-group-bg:                     $body-bg;
 $list-group-hover-bg:               lighten($body-bg, 2%);
 $list-group-action-active-bg:       lighten($body-bg, 4%);
+
+// Toasts
+$toast-background-color:            rgba($body-bg, .85) !default;
