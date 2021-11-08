@@ -188,6 +188,7 @@ class Thumbnail extends HTMLElement {
       fileToUpload: null,
       path: null,
       disabled: true,
+	  uuid: 0,
     };
 
     this._container = document.createElement('div');
@@ -221,14 +222,15 @@ class Thumbnail extends HTMLElement {
 
     this._settings.context = newValue;
     this._settings.language = this._settings.context.getLanguageTranslator().language;
+	if(this._settings.uuid === 0) this._settings.uuid = this._settings.context.createUUID();
   }
 
   set state(newValue) {
     this._settings.state = newValue;
 
-    if (this._settings.state == null || this._settings.lastCodeValue === this._settings.state._code) return;
+    if (this._settings.state == null || this._settings.uuid === 0 || this._settings.lastCodeValue === `${this._settings.state._code}_${this._settings.uuid}`) return;
 
-    this._settings.lastCodeValue = this._settings.state._code;
+    this._settings.lastCodeValue = `${this._settings.state._code}_${this._settings.uuid}`;
 
     var newAvatarContainer = getAvatarContainer(this._settings.lastCodeValue);
     var newFeedBackContainer = getFeedBackContainer(this._settings.lastCodeValue);
