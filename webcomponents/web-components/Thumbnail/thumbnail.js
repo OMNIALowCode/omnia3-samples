@@ -118,15 +118,17 @@ function getFeedBackContainer(code) {
   return feedback;
 }
 
-function getEditContainer(onChange, onClick) {
+function getEditContainer(onChange, onClick, code) {
   const editContainer = document.createElement('div');
   editContainer.className = 'edit-container';
 
   const addLabel = document.createElement('label');
+  addLabel.id = `Thumbnail_${code}.label.add`;
   addLabel.className = 'btn-primary';
   const uploadImageInput = getUploadImageInput(onChange);
   addLabel.appendChild(uploadImageInput);
   const removeLabel = document.createElement('label');
+  removeLabel.id = `Thumbnail_${code}.label.remove`;
   removeLabel.className = 'remove btn-danger ';
   const removeImageButton = getFileRemoveButton(onClick);
 
@@ -165,7 +167,7 @@ function showErrorMessage(message, code) {
 function hideErrorMessage(code) {
   const label = document.querySelector(`#ThumbnailError_${code}`);
   if (label == null) return;
-  label.style.dispay = 'display:none';
+  label.style.display = 'display:none';
   label.innerHTML = '';
   const box = document.querySelector(`#ThumbnailBox_${code}`);
   box.classList.remove('isInvalid');
@@ -188,7 +190,7 @@ class Thumbnail extends HTMLElement {
       fileToUpload: null,
       path: null,
       disabled: true,
-	  uuid: 0,
+      uuid: 0,
     };
 
     this._container = document.createElement('div');
@@ -222,13 +224,18 @@ class Thumbnail extends HTMLElement {
 
     this._settings.context = newValue;
     this._settings.language = this._settings.context.getLanguageTranslator().language;
-	if(this._settings.uuid === 0) this._settings.uuid = this._settings.context.createUUID();
+    if (this._settings.uuid === 0) this._settings.uuid = this._settings.context.createUUID();
   }
 
   set state(newValue) {
     this._settings.state = newValue;
 
-    if (this._settings.state == null || this._settings.uuid === 0 || this._settings.lastCodeValue === `${this._settings.state._code}_${this._settings.uuid}`) return;
+    if (
+      this._settings.state == null ||
+      this._settings.uuid === 0 ||
+      this._settings.lastCodeValue === `${this._settings.state._code}_${this._settings.uuid}`
+    )
+      return;
 
     this._settings.lastCodeValue = `${this._settings.state._code}_${this._settings.uuid}`;
 
@@ -238,8 +245,8 @@ class Thumbnail extends HTMLElement {
     if (this._settings.disabled) {
       this.appendReadonlyElements(newAvatarContainer, newFeedBackContainer);
     } else {
-      var currentAvatarContainer = document.querySelector("div[id^='Thumbnail_']");
-      var currentFeedbackElement = document.querySelector("div[id^='ThumbnailError_']");
+      var currentAvatarContainer = document.querySelector(`div[id^='Thumbnail_${this._settings.lastCodeValue}']`);
+      var currentFeedbackElement = document.querySelector(`div[id^='ThumbnailError_${this._settings.lastCodeValue}']`);
       if (currentAvatarContainer == null || this._settings.state.RefreshElements) {
         this.appendEditElements(newAvatarContainer, newFeedBackContainer);
       } else {
@@ -277,7 +284,9 @@ class Thumbnail extends HTMLElement {
   appendEditElements(newAvatarContainer, newFeedBackContainer) {
     this._container.id = `ThumbnailBox_${this._settings.lastCodeValue}`;
     this._container.appendChild(newAvatarContainer);
-    this._container.appendChild(getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this)));
+    this._container.appendChild(
+      getEditContainer(this.onUpload.bind(this), this.onFileRemove.bind(this), this._settings.lastCodeValue),
+    );
     this._feedbackElement.appendChild(newFeedBackContainer);
   }
 
@@ -304,8 +313,8 @@ class Thumbnail extends HTMLElement {
     const apiClient = this._settings.context.createApiHttpClient();
 
     apiClient.doGetFile(url, extension).then(
-      response => this.handlerGetFileResponse(response.data),
-      response => showErrorMessage(response.message, this._settings.lastCodeValue),
+      (response) => this.handlerGetFileResponse(response.data),
+      (response) => showErrorMessage(response.message, this._settings.lastCodeValue),
     );
   }
 
@@ -320,7 +329,7 @@ class Thumbnail extends HTMLElement {
     const apiClient = this._settings.context.createApiHttpClient();
     apiClient
       .doDelete(url)
-      .then(this.handlerDeleteResponse(file), response =>
+      .then(this.handlerDeleteResponse(file), (response) =>
         showErrorMessage(response.message, this._settings.lastCodeValue),
       );
   }
@@ -329,8 +338,8 @@ class Thumbnail extends HTMLElement {
     const apiClient = this._settings.context.createApiHttpClient();
     const url = this.endpoint(this._settings.lastCodeValue);
     apiClient.doPostFile(url, file).then(
-      response => this.handlerPostFileResponse(file, response),
-      response => showErrorMessage(response.message, this._settings.lastCodeValue),
+      (response) => this.handlerPostFileResponse(file, response),
+      (response) => showErrorMessage(response.message, this._settings.lastCodeValue),
     );
   }
 
@@ -343,14 +352,14 @@ class Thumbnail extends HTMLElement {
 
   handlerDeleteResponse(file) {
     hideErrorMessage(this._settings.lastCodeValue);
-    this._settings.files = this._settings.files.filter(f => f.name !== file);
-    const newValue = this._settings.files.map(f => f.name);
+    this._settings.files = this._settings.files.filter((f) => f.name !== file);
+    const newValue = this._settings.files.map((f) => f.name);
     const avatar_container = document.querySelector('.avatar-container');
     avatar_container.style.backgroundImage = '';
     avatar_container.className = 'avatar-container';
-    const addLabel = document.querySelector('label.btn-primary');
+    const addLabel = document.querySelector(`label[id^='Thumbnail_${this._settings.lastCodeValue}.label.add']`);
     if (addLabel != null) addLabel.className = 'btn-primary';
-    const removeLabel = document.querySelector('label.remove');
+    const removeLabel = document.querySelector(`label[id^='Thumbnail_${this._settings.lastCodeValue}.label.remove']`);
     if (removeLabel != null) removeLabel.className = 'remove btn-danger';
     this.dispatchEvent(new CustomEvent('value-updated', { detail: { value: newValue.join(';') } }));
   }
@@ -362,14 +371,14 @@ class Thumbnail extends HTMLElement {
     reader.readAsDataURL(blob);
 
     const avatar_container = document.querySelector(`#Thumbnail_${this._settings.lastCodeValue}.avatar-container`);
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       avatar_container.style.backgroundImage = `url('${reader.result}')`;
     };
 
     if (avatar_container) avatar_container.className = 'avatar-container no-after';
-    const addLabel = document.querySelector('label.btn-primary');
+    const addLabel = document.querySelector(`label[id^='Thumbnail_${this._settings.lastCodeValue}.label.add']`);
     if (addLabel) addLabel.className = 'btn-primary add';
-    const removeLabel = document.querySelector('label.remove');
+    const removeLabel = document.querySelector(`label[id^='Thumbnail_${this._settings.lastCodeValue}.label.remove']`);
     if (removeLabel) removeLabel.className = 'btn-danger remove on';
   }
 
