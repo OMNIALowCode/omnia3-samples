@@ -354,7 +354,7 @@ class Thumbnail extends HTMLElement {
     hideErrorMessage(this._settings.lastCodeValue);
     this._settings.files = this._settings.files.filter((f) => f.name !== file);
     const newValue = this._settings.files.map((f) => f.name);
-    const avatar_container = document.querySelector('.avatar-container');
+    const avatar_container = document.querySelector(`div[id^='Thumbnail_${this._settings.lastCodeValue}']`);
     avatar_container.style.backgroundImage = '';
     avatar_container.className = 'avatar-container';
     const addLabel = document.querySelector(`label[id^='Thumbnail_${this._settings.lastCodeValue}.label.add']`);
