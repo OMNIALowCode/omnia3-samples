@@ -12,9 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "and": "^0.0.3",
     "bootstrap": "4.3.1",
+    "build": "^0.1.4",
     "loader-utils": "^1.4.2",
-    "minimatch": "^3.1.2"
+    "minimatch": "^3.1.2",
+    "storybook": "^8.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
@@ -26,6 +29,7 @@
     "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
     "@storybook/html": "^8.6.4",
     "@storybook/html-webpack5": "^8.6.4",
+    "storybook": "^8.6.4",
     "babel-loader": "^8.0.6"
   }
 }
