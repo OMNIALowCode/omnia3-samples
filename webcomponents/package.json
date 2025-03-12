@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "and": "^0.0.3",
-    "bootstrap": "4.3.1",
+    "bootstrap": "5.0.0",
     "build": "^0.1.4",
     "loader-utils": "^1.4.2",
     "minimatch": "^3.1.2",
