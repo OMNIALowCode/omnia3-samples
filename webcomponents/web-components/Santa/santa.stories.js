@@ -1,4 +1,4 @@
-import { document, console } from 'global';
+import { document } from 'global';
 
 // import component
 import './santa';
