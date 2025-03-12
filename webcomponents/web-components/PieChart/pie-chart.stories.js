@@ -1,5 +1,5 @@
-import { document, console } from 'global';
 import { object } from '@storybook/addon-knobs';
+import { document } from 'global';
 // import component
 import './pie-chart';
 import mdx from './pie-chart.mdx';

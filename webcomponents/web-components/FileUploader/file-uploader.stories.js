@@ -1,5 +1,5 @@
-import { document, console } from 'global';
-import { object, boolean, text } from '@storybook/addon-knobs';
+import { boolean, text } from '@storybook/addon-knobs';
+import { document } from 'global';
 // import component
 import './file-uploader';
 import mdx from './file-uploader.mdx';
@@ -26,7 +26,6 @@ export const Default = () => {
 
 Default.story = {
   name: 'default',
-  parameters: { notes: readme },
 };
 
 function createElement() {
