@@ -1,25 +1,27 @@
 {
-    "name": "storybook",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook -c .storybook -o docs"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "bootstrap": "4.3.1"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.7.5",
-        "@storybook/addon-docs": "^7.5.1",
-        "@storybook/addon-knobs": "^7.0.2",
-        "@storybook/addon-viewport": "^7.5.1",
-        "@storybook/html": "^7.5.1",
-        "babel-loader": "^8.0.6"
-    }
+  "name": "storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -c .storybook -o docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "4.3.1",
+    "loader-utils": "^1.4.2",
+    "minimatch": "^3.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@storybook/addon-docs": "^8.0.5",
+    "@storybook/addon-knobs": "^8.0.1",
+    "@storybook/addon-viewport": "^8.0.5",
+    "@storybook/html": "^8.0.5",
+    "babel-loader": "^8.0.6"
+  }
 }
