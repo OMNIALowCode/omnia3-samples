@@ -17,7 +17,7 @@
     "braces": "^3.0.3",
     "build": "^0.1.4",
     "loader-utils": "^1.4.2",
-    "minimatch": "^3.1.2",
+    "minimatch": "^10.2.1",
     "storybook": "^8.6.4"
   },
   "devDependencies": {
